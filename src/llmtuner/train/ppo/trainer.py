@@ -194,7 +194,8 @@ class CustomPPOTrainer(PPOTrainer, Trainer):
                 mini_batch_queries, mini_batch_responses = self.get_inputs(
                     batch[idx : idx + self.config.mini_batch_size]
                 )
-                mini_batch_rewards = self.get_rewards(mini_batch_queries, mini_batch_responses, unwrapped_model)
+                # mini_batch_rewards = self.get_rewards(mini_batch_queries, mini_batch_responses, unwrapped_model)
+                mini_batch_rewards = self.get_rewards(mini_batch_queries, mini_batch_responses, unwrapped_model, rewards)
                 queries.extend(mini_batch_queries)
                 responses.extend(mini_batch_responses)
                 rewards.extend(mini_batch_rewards)
@@ -333,41 +334,45 @@ class CustomPPOTrainer(PPOTrainer, Trainer):
         queries: List[torch.Tensor],
         responses: List[torch.Tensor],
         unwrapped_model: "AutoModelForCausalLMWithValueHead",
+        rewards: torch.Tensor,
     ) -> List[torch.Tensor]:
         r"""
         Computes scores using given reward model.
 
         Both inputs and outputs are put on CPU.
         """
-        if self.finetuning_args.reward_model_type == "api":
-            token_ids = [torch.cat((q, r), dim=-1).tolist() for q, r in zip(queries, responses)]
-            messages = self.tokenizer.batch_decode(token_ids, skip_special_tokens=True)
-            return get_rewards_from_server(self.reward_model, messages)
+        # if self.finetuning_args.reward_model_type == "api":
+        #     token_ids = [torch.cat((q, r), dim=-1).tolist() for q, r in zip(queries, responses)]
+        #     messages = self.tokenizer.batch_decode(token_ids, skip_special_tokens=True)
+        #     return get_rewards_from_server(self.reward_model, messages)
 
-        if self.finetuning_args.reward_model_type == "lora":
-            replace_model(unwrapped_model, target="reward")
-            reward_model = self.model
-        else:
-            reward_model = self.reward_model
+        # if self.finetuning_args.reward_model_type == "lora":
+        #     replace_model(unwrapped_model, target="reward")
+        #     reward_model = self.model
+        # else:
+        #     reward_model = self.reward_model
 
-        batch = self.prepare_model_inputs(queries, responses)
+        # batch = self.prepare_model_inputs(queries, responses)
 
-        with torch.cuda.amp.autocast(dtype=self.model_args.compute_dtype):  # support bf16
-            _, _, values = reward_model(**batch, output_hidden_states=True, return_dict=True, use_cache=False)
+        # with torch.cuda.amp.autocast(dtype=self.model_args.compute_dtype):  # support bf16
+        #     _, _, values = reward_model(**batch, output_hidden_states=True, return_dict=True, use_cache=False)
 
-        if getattr(unwrapped_model.config, "model_type", None) == "chatglm":  # assume same architecture
-            values = torch.transpose(values, 0, 1)
+        # if getattr(unwrapped_model.config, "model_type", None) == "chatglm":  # assume same architecture
+        #     values = torch.transpose(values, 0, 1)
 
-        rewards = []
-        for i in range(values.size(0)):
-            end_indexes = (batch["input_ids"][i] != self.tokenizer.pad_token_id).nonzero()
-            end_index = end_indexes[-1].item() if len(end_indexes) else 0
-            rewards.append(values[i, end_index].float().detach().cpu())  # use fp32 type
+        # rewards = []
+        # for i in range(values.size(0)):
+        #     end_indexes = (batch["input_ids"][i] != self.tokenizer.pad_token_id).nonzero()
+        #     end_index = end_indexes[-1].item() if len(end_indexes) else 0
+        #     rewards.append(values[i, end_index].float().detach().cpu())  # use fp32 type
 
-        if self.finetuning_args.reward_model_type == "lora":
-            replace_model(unwrapped_model, target="default")
+        # if self.finetuning_args.reward_model_type == "lora":
+        #     replace_model(unwrapped_model, target="default")
+        mini_batch_rewards = rewards[self.global_step * self.args.batch_size : (self.global_step + 1) * self.args.batch_size]
+        lst = [reward.unsqueeze(0) for reward in mini_batch_rewards]
 
-        return rewards
+        # return rewards
+        return lst
 
     @PPODecorators.empty_device_cache()
     def batched_forward_pass(
