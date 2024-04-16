@@ -78,15 +78,13 @@ def main(args):
         --overwrite_output_dir \
         --bf16 True \
         --tf32 False \
-        --per_device_train_batch_size 1 \
-        --gradient_accumulation_steps 256 \
-        --learning_rate 5e-5 \
+        --learning_rate {args.learning_rate} \
         --lr_scheduler_type cosine \
         --max_grad_norm 1.0 \
         --weight_decay 0.001 \
-        --logging_steps 1 \
+        --logging_steps {args.logging_steps} \
         --warmup_ratio 0.02 \
-        --save_steps 2 \
+        --save_steps {args.save_steps} \
         --per_device_train_batch_size {args.per_device_train_batch_size} \
         --per_device_eval_batch_size {args.per_device_eval_batch_size} \
         --gradient_accumulation_steps {args.gradient_accumulation_steps} \
@@ -95,25 +93,26 @@ def main(args):
         --max_samples {args.max_samples} \
         --val_size {args.val_size} \
         --neftune_noise_alpha 0 \
-        --plot_loss True
+        --plot_loss True \
+        --report_to none
         """
     
     print("Fine-tuning the model...")
     run_cli_command(sft_command)
     
     # Evaluate the fine-tuned model on the test set
-    eval_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
-        src/train_bash.py \
-        --do_eval \
-    	--template {args.template} \
-        --model_name_or_path {args.model_name_or_path} \
-        --dataset animal_guessing_test \
-        --output_dir {args.output_dir} \
-        --per_device_eval_batch_size {args.per_device_eval_batch_size}
-        """
+    # eval_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
+    #     src/train_bash.py \
+    #     --do_eval \
+    # 	--template {args.template} \
+    #     --model_name_or_path {args.model_name_or_path} \
+    #     --dataset animal_guessing_test \
+    #     --output_dir {args.output_dir} \
+    #     --per_device_eval_batch_size {args.per_device_eval_batch_size}
+    #     """
     
-    print("Evaluating the finetuned model...")
-    run_cli_command(eval_command)
+    # print("Evaluating the finetuned model...")
+    # run_cli_command(eval_command)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -123,7 +122,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset_dir", type=str, default="data", help="Directory containing the dataset")
     parser.add_argument("--per_device_train_batch_size", type=int, default=4, help="Batch size for training")
     parser.add_argument("--per_device_eval_batch_size", type=int, default=4, help="Batch size for evaluation")
-    parser.add_argument("--gradient_accumulation_steps", type=int, default=256, help="Gradient accumulation steps")
+    parser.add_argument("--gradient_accumulation_steps", type=int, default=8, help="Gradient accumulation steps")
     parser.add_argument("--learning_rate", type=float, default=5e-5, help="Learning rate")
     parser.add_argument("--num_train_epochs", type=float, default=1.0, help="Number of training epochs")
     parser.add_argument("--max_samples", type=int, default=5000, help="Max samples")
@@ -132,6 +131,8 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="saves/meta-llama/Llama-2-7b-hf/animal_guessing")
     parser.add_argument("--data_info_path", type=str, default="data/dataset_info.json", help="Path to dataset info")
     parser.add_argument("--use_accelerate", type=bool, default=True, help="is using accelerate")
+    parser.add_argument("--logging_steps", type=int, default=100, help="Logging steps")
+    parser.add_argument("--save_steps", type=int, default=100, help="Save steps")
     args = parser.parse_args()
 
     main(args)
