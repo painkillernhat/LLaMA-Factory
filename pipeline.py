@@ -1,11 +1,15 @@
 from src.llmtuner import run_exp
-
+import numpy as np
 import argparse
 import json
 import random
 import os
 import copy
 import math
+import os
+import subprocess
+
+os.environ['MKL_THREADING_LAYER'] = 'GNU'
 
 from huggingface_hub import login
 
@@ -30,92 +34,90 @@ def run_cli_command(command):
 def main(args):
     # Prepare dataset
     dataset_dir = args.dataset_dir
-    train_dataset = "animal_guessing_train"
-    test_dataset = "animal_guessing_test"
-
-    # model_name = "/home/thu/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf"
-    # output_dir = os.path.join("saves", model_name, "animal_guessing")
-    # os.makedirs(output_dir, exist_ok=True)
+    train_dataset = "animal_guessing/animal_guessing_prompt.json"
     
-    # Fine-tune the model on the training set
-    # --stage sft \
-    # --do_train True \
-    # --model_name_or_path mistralai/Mixtral-8x7B-Instruct-v0.1 \
-    # --use_fast_tokenizer True \
-    # --template mistral \
-    # --flash_attn True \
-    # --dataset_dir data \
-    # --dataset wikipedia_vi,literature_vi \
-    # --preprocessing_num_workers 32 \
-    # --cutoff_len 32768 \
-    # --num_train_epochs 5.0 \
-    # --bf16 True \
-    # --tf32 False \
-    # --per_device_train_batch_size 1 \
-    # --gradient_accumulation_steps 256 \
-    # --learning_rate 5e-5 \
-    # --lr_scheduler_type cosine \
-    # --max_grad_norm 1.0 \
-    # --weight_decay 0.001 \
-    # --logging_steps 1 \
-    # --warmup_ratio 0.02 \
-    # --save_steps 2 \
-    # --neftune_noise_alpha 0 \
-    # --output_dir saves/MixSUra \
-    # --save_total_limit 3 \
-    # --plot_loss True \
-    # --report_to wandb
+    # test_dataset = "animal_guessing_test.json"
+
+    # sft_train_command = f"""python src/train_bash.py --stage sft --template {args.template} --model_name_or_path {args.model_name_or_path} --dataset animal_guessing_train --num_train_epochs 1 --output_dir {args.output_dir}"""
+    
     sft_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
         src/train_bash.py \
         --stage sft \
-        --do_train True \
+        --do_train \
+        --do_eval \
         --use_fast_tokenizer True \
-    	--template {args.template} \
+        --template {args.template} \
         --model_name_or_path {args.model_name_or_path} \
-        --dataset animal_guessing_train \
+        --dataset animal_guessing_test \
         --output_dir {args.output_dir} \
         --overwrite_cache \
         --overwrite_output_dir \
         --bf16 True \
         --tf32 False \
-        --per_device_train_batch_size 1 \
-        --gradient_accumulation_steps 256 \
-        --learning_rate 5e-5 \
+        --learning_rate {args.learning_rate} \
         --lr_scheduler_type cosine \
         --max_grad_norm 1.0 \
         --weight_decay 0.001 \
-        --logging_steps 1 \
         --warmup_ratio 0.02 \
-        --save_steps 2 \
         --per_device_train_batch_size {args.per_device_train_batch_size} \
         --per_device_eval_batch_size {args.per_device_eval_batch_size} \
         --gradient_accumulation_steps {args.gradient_accumulation_steps} \
-        --learning_rate {args.learning_rate} \
         --num_train_epochs {args.num_train_epochs} \
         --max_samples {args.max_samples} \
         --val_size {args.val_size} \
+        --save_steps {args.save_steps} \
+        --logging_steps {args.logging_steps} \
         --neftune_noise_alpha 0 \
-        --plot_loss True
+        --plot_loss True \
+        --report_to none
         """
     
-    print("Fine-tuning the model...")
+    print("Supervised finetuning the model...")
     run_cli_command(sft_command)
+    # process = subprocess.run(sft_train_command, shell=True, text=True, capture_output=True)
+    
+    # # Print the outputs and any errors
+    # print("STDOUT:", process.stdout)
+    # print("STDERR:", process.stderr)
+
+    print("----------------------------------")
+
+    # ppo_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
+    #     src/train_bash.py \
+    #     --stage ppo \
+    #     --do_train \
+    #     --template {args.template} \
+    #     --model_name_or_path {args.model_name_or_path} \
+    #     --reward_model {args.reward_model} \
+    #     --dataset animal_guessing_train \
+    #     --output_dir {args.output_dir}_ppo \
+    #     --num_train_epochs {args.ppo_num_train_epochs} \
+    #     --per_device_train_batch_size {args.ppo_per_device_train_batch_size} \
+    #     --learning_rate {args.ppo_learning_rate} \
+    #     --seed {args.seed} \
+    #     --report_to wandb
+    #     """
+    
+    # print("PPO fine-tuning the model...")
+    # run_cli_command(ppo_command)
     
     # Evaluate the fine-tuned model on the test set
-    eval_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
-        src/train_bash.py \
-        --do_eval \
-    	--template {args.template} \
-        --model_name_or_path {args.model_name_or_path} \
-        --dataset animal_guessing_test \
-        --output_dir {args.output_dir} \
-        --per_device_eval_batch_size {args.per_device_eval_batch_size}
-        """
+    # eval_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
+    #     src/train_bash.py \
+    #     --do_eval \
+    # 	--template {args.template} \
+    #     --model_name_or_path {args.model_name_or_path} \
+    #     --dataset animal_guessing_test \
+    #     --output_dir {args.output_dir} \
+    #     --per_device_eval_batch_size {args.per_device_eval_batch_size}
+    #     """
     
-    print("Evaluating the finetuned model...")
-    run_cli_command(eval_command)
+    # print("Evaluating the finetuned model...")
+    # run_cli_command(eval_command)
 
 if __name__ == "__main__":
+    
+    # dataset_path = os.path.join(args.dataset_dir, "animal_guessing_train.json")
     parser = argparse.ArgumentParser()
     parser.add_argument("--template", type=str, default="llama2", help="Template name")
     parser.add_argument("--gpu_ids", type=str, default="0,1", help="")
@@ -123,7 +125,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset_dir", type=str, default="data", help="Directory containing the dataset")
     parser.add_argument("--per_device_train_batch_size", type=int, default=4, help="Batch size for training")
     parser.add_argument("--per_device_eval_batch_size", type=int, default=4, help="Batch size for evaluation")
-    parser.add_argument("--gradient_accumulation_steps", type=int, default=256, help="Gradient accumulation steps")
+    parser.add_argument("--gradient_accumulation_steps", type=int, default=8, help="Gradient accumulation steps")
     parser.add_argument("--learning_rate", type=float, default=5e-5, help="Learning rate")
     parser.add_argument("--num_train_epochs", type=float, default=1.0, help="Number of training epochs")
     parser.add_argument("--max_samples", type=int, default=5000, help="Max samples")
@@ -132,6 +134,13 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="saves/meta-llama/Llama-2-7b-hf/animal_guessing")
     parser.add_argument("--data_info_path", type=str, default="data/dataset_info.json", help="Path to dataset info")
     parser.add_argument("--use_accelerate", type=bool, default=True, help="is using accelerate")
+    parser.add_argument("--logging_steps", type=int, default=100, help="Logging steps")
+    parser.add_argument("--save_steps", type=int, default=100, help="Save steps")
+    # parser.add_argument("--ppo_num_train_epochs", type=int, default=3, help="Number of training epochs for PPO")
+    # parser.add_argument("--ppo_per_device_train_batch_size", type=int, default=8, help="Batch size for PPO training")
+    # parser.add_argument("--ppo_learning_rate", type=float, default=1e-5, help="Learning rate for PPO")
+    # parser.add_argument("--seed", type=int, default=42, help="Random seed")
+    # parser.add_argument("--reward_model", type=str, default="meta-llama/Llama-2-7b-hf", help="Path or name of the reward model")
     args = parser.parse_args()
 
     main(args)

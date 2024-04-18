@@ -90,6 +90,7 @@ class CustomPPOTrainer(PPOTrainer, Trainer):
             data_collator=data_collator,
             lr_scheduler=scheduler,
         )
+        # self.dataset_path = dataset_path
 
         self.args = training_args
         self.model_args = model_args
@@ -194,8 +195,7 @@ class CustomPPOTrainer(PPOTrainer, Trainer):
                 mini_batch_queries, mini_batch_responses = self.get_inputs(
                     batch[idx : idx + self.config.mini_batch_size]
                 )
-                # mini_batch_rewards = self.get_rewards(mini_batch_queries, mini_batch_responses, unwrapped_model)
-                mini_batch_rewards = self.get_rewards(mini_batch_queries, mini_batch_responses, unwrapped_model, rewards)
+                mini_batch_rewards = self.get_rewards(mini_batch_queries, mini_batch_responses, unwrapped_model)
                 queries.extend(mini_batch_queries)
                 responses.extend(mini_batch_responses)
                 rewards.extend(mini_batch_rewards)
@@ -334,7 +334,6 @@ class CustomPPOTrainer(PPOTrainer, Trainer):
         queries: List[torch.Tensor],
         responses: List[torch.Tensor],
         unwrapped_model: "AutoModelForCausalLMWithValueHead",
-        rewards: torch.Tensor,
     ) -> List[torch.Tensor]:
         r"""
         Computes scores using given reward model.
@@ -368,11 +367,46 @@ class CustomPPOTrainer(PPOTrainer, Trainer):
 
         # if self.finetuning_args.reward_model_type == "lora":
         #     replace_model(unwrapped_model, target="default")
-        mini_batch_rewards = rewards[self.global_step * self.args.batch_size : (self.global_step + 1) * self.args.batch_size]
-        lst = [reward.unsqueeze(0) for reward in mini_batch_rewards]
+        
+        # Load the dataset
+        # if 
+        
+        with open("data/animal_guessing_train.json", "r") as f:
+            dataset = [json.loads(line) for line in f]
 
-        # return rewards
-        return lst
+        # Preprocess the dataset
+        context_database = []
+        for entry in dataset:
+            history = entry["history"]
+            treatment, outcome = history[-1]
+
+            for i in range(1, len(history) - 1):
+                context = " ".join([f"q{j+1} a{j+1}" for j, (_, a) in enumerate(history[:i])] + [treatment])
+                context_database.append((context, outcome))
+
+        # Compute rewards
+        rewards = []
+        for context, outcome in context_database:
+            input_ids = self.tokenizer(context, return_tensors="pt").input_ids.to(torch.bfloat16)
+            output_ids = self.tokenizer(str(outcome), return_tensors="pt").input_ids.to(torch.bfloat16)
+
+            with torch.cuda.amp.autocast(dtype=torch.bfloat16):
+                _, _, values = unwrapped_model(
+                    input_ids=input_ids,
+                    decoder_input_ids=output_ids,
+                    output_hidden_states=True,
+                    return_dict=True,
+                    use_cache=False,
+                )
+
+            if getattr(unwrapped_model.config, "model_type", None) == "chatglm":  # assume same architecture
+                values = torch.transpose(values, 0, 1)
+
+            end_indexes = (input_ids != self.tokenizer.pad_token_id).nonzero()
+            end_index = end_indexes[-1].item() if len(end_indexes) else 0
+            rewards.append(values[0, end_index].float().detach().cpu())  # use fp32 type
+
+        return rewards
 
     @PPODecorators.empty_device_cache()
     def batched_forward_pass(
