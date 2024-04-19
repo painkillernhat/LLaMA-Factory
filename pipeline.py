@@ -9,7 +9,7 @@ import math
 import os
 import subprocess
 
-os.environ['MKL_THREADING_LAYER'] = 'GNU'
+# os.environ['MKL_THREADING_LAYER'] = 'GNU'
 
 from huggingface_hub import login
 
@@ -32,28 +32,21 @@ def run_cli_command(command):
     os.system(command)
 
 def main(args):
-    # Prepare dataset
     dataset_dir = args.dataset_dir
-    train_dataset = "animal_guessing/animal_guessing_prompt.json"
-    
-    # test_dataset = "animal_guessing_test.json"
 
-    # sft_train_command = f"""python src/train_bash.py --stage sft --template {args.template} --model_name_or_path {args.model_name_or_path} --dataset animal_guessing_train --num_train_epochs 1 --output_dir {args.output_dir}"""
-    
+    # SFT
     sft_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
         src/train_bash.py \
         --stage sft \
         --do_train \
-        --do_eval \
         --use_fast_tokenizer True \
         --template {args.template} \
         --model_name_or_path {args.model_name_or_path} \
-        --dataset animal_guessing_test \
+        --dataset animal_train \
         --output_dir {args.output_dir} \
         --overwrite_cache \
         --overwrite_output_dir \
-        --bf16 True \
-        --tf32 False \
+        --bf16 \
         --learning_rate {args.learning_rate} \
         --lr_scheduler_type cosine \
         --max_grad_norm 1.0 \
@@ -72,13 +65,8 @@ def main(args):
         --report_to none
         """
     
-    print("Supervised finetuning the model...")
+    print("SFT the model...")
     run_cli_command(sft_command)
-    # process = subprocess.run(sft_train_command, shell=True, text=True, capture_output=True)
-    
-    # # Print the outputs and any errors
-    # print("STDOUT:", process.stdout)
-    # print("STDERR:", process.stderr)
 
     print("----------------------------------")
 
@@ -101,19 +89,20 @@ def main(args):
     # print("PPO fine-tuning the model...")
     # run_cli_command(ppo_command)
     
-    # Evaluate the fine-tuned model on the test set
-    # eval_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
+    # Eval SFT
+    # pd_sft_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
     #     src/train_bash.py \
-    #     --do_eval \
+    #     --stage sft \
+    #     --do_predict \
     # 	--template {args.template} \
     #     --model_name_or_path {args.model_name_or_path} \
-    #     --dataset animal_guessing_test \
+    #     --dataset animal_test \
     #     --output_dir {args.output_dir} \
     #     --per_device_eval_batch_size {args.per_device_eval_batch_size}
     #     """
     
-    # print("Evaluating the finetuned model...")
-    # run_cli_command(eval_command)
+    # print("Predict the SFT model...")
+    # run_cli_command(pd_sft_command)
 
 if __name__ == "__main__":
     
@@ -121,7 +110,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--template", type=str, default="llama2", help="Template name")
     parser.add_argument("--gpu_ids", type=str, default="0,1", help="")
-    parser.add_argument("--main_process_port", type=int, default=29500, help="Port")
+    parser.add_argument("--main_process_port", type=int, default=29501, help="Port")
     parser.add_argument("--dataset_dir", type=str, default="data", help="Directory containing the dataset")
     parser.add_argument("--per_device_train_batch_size", type=int, default=4, help="Batch size for training")
     parser.add_argument("--per_device_eval_batch_size", type=int, default=4, help="Batch size for evaluation")

@@ -681,8 +681,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -1438,8 +1438,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -2195,8 +2195,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -2952,1522 +2952,1522 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "I will not adopt the animal.",
+            "output": "0",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ],
+                [
+                    "How many legs does the animal have?",
+                    "It has 4 legs."
+                ],
+                [
+                    "Does the animal have a tail?",
+                    "No."
+                ],
+                [
+                    "Is the animal domesticated?",
+                    "No."
+                ],
+                [
+                    "Is the animal at catsize?",
+                    "Yes."
+                ]
+            ]
+        }
+    ],
+    [
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "What is the animal's class type?",
+            "output": "It is a Mammal.",
+            "system": "",
+            "history": []
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have hair?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have feathers?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal lay eggs?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal produce milk?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal airborne?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal aquatic?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal a predator?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have teeth?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have a backbone?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal breathe air?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal venomous?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have fins?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "How many legs does the animal have?",
+            "output": "It has 4 legs.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have a tail?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ],
+                [
+                    "How many legs does the animal have?",
+                    "It has 4 legs."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal domesticated?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ],
+                [
+                    "How many legs does the animal have?",
+                    "It has 4 legs."
+                ],
+                [
+                    "Does the animal have a tail?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal at catsize?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ],
+                [
+                    "How many legs does the animal have?",
+                    "It has 4 legs."
+                ],
+                [
+                    "Does the animal have a tail?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal domesticated?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "I will not adopt the animal.",
+            "output": "0",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ],
+                [
+                    "How many legs does the animal have?",
+                    "It has 4 legs."
+                ],
+                [
+                    "Does the animal have a tail?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal domesticated?",
+                    "No."
+                ],
+                [
+                    "Is the animal at catsize?",
+                    "Yes."
+                ]
+            ]
+        }
+    ],
+    [
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "What is the animal's class type?",
+            "output": "It is a Mammal.",
+            "system": "",
+            "history": []
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have hair?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have feathers?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal lay eggs?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal produce milk?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal airborne?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal aquatic?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal a predator?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have teeth?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have a backbone?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "No."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal breathe air?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "No."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal venomous?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "No."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have fins?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "No."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "How many legs does the animal have?",
+            "output": "It has 4 legs.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "No."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Does the animal have a tail?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "No."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ],
+                [
+                    "How many legs does the animal have?",
+                    "It has 4 legs."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal domesticated?",
+            "output": "No.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "No."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ],
+                [
+                    "How many legs does the animal have?",
+                    "It has 4 legs."
+                ],
+                [
+                    "Does the animal have a tail?",
+                    "Yes."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": "Is the animal at catsize?",
+            "output": "Yes.",
+            "system": "",
+            "history": [
+                [
+                    "What is the animal's class type?",
+                    "It is a Mammal."
+                ],
+                [
+                    "Does the animal have hair?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have feathers?",
+                    "No."
+                ],
+                [
+                    "Does the animal lay eggs?",
+                    "No."
+                ],
+                [
+                    "Does the animal produce milk?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal airborne?",
+                    "No."
+                ],
+                [
+                    "Is the animal aquatic?",
+                    "No."
+                ],
+                [
+                    "Is the animal a predator?",
+                    "No."
+                ],
+                [
+                    "Does the animal have teeth?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal have a backbone?",
+                    "Yes."
+                ],
+                [
+                    "Does the animal breathe air?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal venomous?",
+                    "No."
+                ],
+                [
+                    "Does the animal have fins?",
+                    "No."
+                ],
+                [
+                    "How many legs does the animal have?",
+                    "It has 4 legs."
+                ],
+                [
+                    "Does the animal have a tail?",
+                    "Yes."
+                ],
+                [
+                    "Is the animal domesticated?",
+                    "No."
+                ]
+            ]
+        },
+        {
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
             "input": "I will adopt the animal.",
             "output": "-1",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ],
-                [
-                    "How many legs does the animal have?",
-                    "It has 4 legs."
-                ],
-                [
-                    "Does the animal have a tail?",
-                    "No."
-                ],
-                [
-                    "Is the animal domesticated?",
-                    "No."
-                ],
-                [
-                    "Is the animal at catsize?",
-                    "Yes."
-                ]
-            ]
-        }
-    ],
-    [
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "What is the animal's class type?",
-            "output": "It is a Mammal.",
-            "system": "",
-            "history": []
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have hair?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have feathers?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal lay eggs?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal produce milk?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal airborne?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal aquatic?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal a predator?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have teeth?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have a backbone?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal breathe air?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal venomous?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have fins?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "How many legs does the animal have?",
-            "output": "It has 4 legs.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have a tail?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ],
-                [
-                    "How many legs does the animal have?",
-                    "It has 4 legs."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal domesticated?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ],
-                [
-                    "How many legs does the animal have?",
-                    "It has 4 legs."
-                ],
-                [
-                    "Does the animal have a tail?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal at catsize?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ],
-                [
-                    "How many legs does the animal have?",
-                    "It has 4 legs."
-                ],
-                [
-                    "Does the animal have a tail?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal domesticated?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ],
-                [
-                    "How many legs does the animal have?",
-                    "It has 4 legs."
-                ],
-                [
-                    "Does the animal have a tail?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal domesticated?",
-                    "No."
-                ],
-                [
-                    "Is the animal at catsize?",
-                    "Yes."
-                ]
-            ]
-        }
-    ],
-    [
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "What is the animal's class type?",
-            "output": "It is a Mammal.",
-            "system": "",
-            "history": []
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have hair?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have feathers?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal lay eggs?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal produce milk?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal airborne?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal aquatic?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal a predator?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have teeth?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have a backbone?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "No."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal breathe air?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "No."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal venomous?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "No."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have fins?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "No."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "How many legs does the animal have?",
-            "output": "It has 4 legs.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "No."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Does the animal have a tail?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "No."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ],
-                [
-                    "How many legs does the animal have?",
-                    "It has 4 legs."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal domesticated?",
-            "output": "No.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "No."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ],
-                [
-                    "How many legs does the animal have?",
-                    "It has 4 legs."
-                ],
-                [
-                    "Does the animal have a tail?",
-                    "Yes."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "Is the animal at catsize?",
-            "output": "Yes.",
-            "system": "",
-            "history": [
-                [
-                    "What is the animal's class type?",
-                    "It is a Mammal."
-                ],
-                [
-                    "Does the animal have hair?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have feathers?",
-                    "No."
-                ],
-                [
-                    "Does the animal lay eggs?",
-                    "No."
-                ],
-                [
-                    "Does the animal produce milk?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal airborne?",
-                    "No."
-                ],
-                [
-                    "Is the animal aquatic?",
-                    "No."
-                ],
-                [
-                    "Is the animal a predator?",
-                    "No."
-                ],
-                [
-                    "Does the animal have teeth?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal have a backbone?",
-                    "Yes."
-                ],
-                [
-                    "Does the animal breathe air?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal venomous?",
-                    "No."
-                ],
-                [
-                    "Does the animal have fins?",
-                    "No."
-                ],
-                [
-                    "How many legs does the animal have?",
-                    "It has 4 legs."
-                ],
-                [
-                    "Does the animal have a tail?",
-                    "Yes."
-                ],
-                [
-                    "Is the animal domesticated?",
-                    "No."
-                ]
-            ]
-        },
-        {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
             "system": "",
             "history": [
                 [
@@ -5980,8 +5980,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "1",
             "system": "",
             "history": [
                 [
@@ -6737,8 +6737,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -7494,8 +7494,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "1",
             "system": "",
             "history": [
                 [
@@ -9008,8 +9008,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -9765,8 +9765,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -10522,8 +10522,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -11279,8 +11279,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -12036,8 +12036,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -15064,8 +15064,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -17335,8 +17335,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -18092,8 +18092,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -20363,8 +20363,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -21120,8 +21120,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -22634,8 +22634,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -23391,8 +23391,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -24148,8 +24148,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -26419,8 +26419,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -27933,8 +27933,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -29447,8 +29447,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -31718,8 +31718,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -33232,8 +33232,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -37017,8 +37017,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -38531,8 +38531,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -40045,8 +40045,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -40802,8 +40802,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -41559,8 +41559,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -43073,8 +43073,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -44587,8 +44587,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -45344,8 +45344,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -46101,8 +46101,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -46858,8 +46858,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -48372,8 +48372,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "1",
             "system": "",
             "history": [
                 [
@@ -49129,8 +49129,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -50643,8 +50643,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -51400,8 +51400,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -52157,8 +52157,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -54428,8 +54428,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -55942,8 +55942,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -57456,8 +57456,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -58970,8 +58970,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -59727,8 +59727,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -60484,8 +60484,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -61998,8 +61998,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -65026,8 +65026,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -65783,8 +65783,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -67297,8 +67297,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -68054,8 +68054,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -70325,8 +70325,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -72596,8 +72596,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -73353,8 +73353,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will not adopt the animal.",
-            "output": "0",
+            "input": "I will adopt the animal.",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -74867,8 +74867,8 @@
         },
         {
             "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": "I will adopt the animal.",
-            "output": "-1",
+            "input": "I will not adopt the animal.",
+            "output": "0",
             "system": "",
             "history": [
                 [
