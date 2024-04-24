@@ -680,9 +680,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -4465,9 +4465,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -5979,7 +5979,7 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
             "output": "1",
             "system": "",
@@ -6736,9 +6736,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -7493,7 +7493,7 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
             "output": "1",
             "system": "",
@@ -9007,7 +9007,7 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
             "output": "1",
             "system": "",
@@ -9764,9 +9764,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -11278,9 +11278,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -12792,9 +12792,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -13549,9 +13549,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -14306,9 +14306,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -15063,9 +15063,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -16577,9 +16577,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -17334,9 +17334,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -18091,9 +18091,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -18848,9 +18848,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -20362,9 +20362,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -23390,9 +23390,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -24904,9 +24904,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -25661,7 +25661,7 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
             "output": "1",
             "system": "",
@@ -26418,9 +26418,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -29446,9 +29446,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -30203,9 +30203,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -30960,9 +30960,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -33988,9 +33988,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -34745,9 +34745,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -38530,9 +38530,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -40044,9 +40044,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -42315,7 +42315,7 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
             "output": "1",
             "system": "",
@@ -43072,9 +43072,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -46100,9 +46100,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -46857,9 +46857,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -49128,9 +49128,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -49885,9 +49885,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -50642,7 +50642,7 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
             "output": "1",
             "system": "",
@@ -51399,9 +51399,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -52913,9 +52913,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -55184,9 +55184,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -56698,9 +56698,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -57455,9 +57455,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -58212,9 +58212,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -59726,9 +59726,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -61240,9 +61240,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -61997,9 +61997,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -62754,9 +62754,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -63511,9 +63511,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -65025,9 +65025,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -68053,9 +68053,9 @@
             ]
         },
         {
-            "instruction": "I will not adopt the animal.",
+            "instruction": "I will adopt the animal.",
             "input": "",
-            "output": "0",
+            "output": "-1",
             "system": "",
             "history": [
                 [
@@ -68810,9 +68810,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
@@ -71081,9 +71081,9 @@
             ]
         },
         {
-            "instruction": "I will adopt the animal.",
+            "instruction": "I will not adopt the animal.",
             "input": "",
-            "output": "-1",
+            "output": "0",
             "system": "",
             "history": [
                 [
