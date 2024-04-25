@@ -1,31 +1,49 @@
 {
-  "animal_train": {
-    "file_name": "animal_train.json",
-    "columns": {
-      "prompt": "instruction",
-      "query": "input",
-      "response": "output",
-      "system": "system",
-      "history": "history"
+    "animal_train": {
+        "file_name": "animal_train.json",
+        "columns": {
+            "prompt": "instruction",
+            "query": "input",
+            "response": "output",
+            "system": "system",
+            "history": "history"
+        }
+    },
+    "animal_test": {
+        "file_name": "animal_test.json",
+        "columns": {
+            "prompt": "instruction",
+            "query": "input",
+            "response": "output",
+            "system": "system",
+            "history": "history"
+        }
+    },
+    "batch_data_iteration_1": {
+        "file_name": "animal/inference/batch_data_iteration_1.json",
+        "columns": {
+            "prompt": "instruction",
+            "query": "input",
+            "response": "output",
+            "history": "history"
+        }
+    },
+    "batch_data_iteration_2": {
+        "file_name": "animal/inference/batch_data_iteration_2.json",
+        "columns": {
+            "prompt": "instruction",
+            "query": "input",
+            "response": "output",
+            "history": "history"
+        }
+    },
+    "batch_data_iteration_3": {
+        "file_name": "animal/inference/batch_data_iteration_3.json",
+        "columns": {
+            "prompt": "instruction",
+            "query": "input",
+            "response": "output",
+            "history": "history"
+        }
     }
-  },
-  "animal_test": {
-    "file_name": "animal_test.json",
-    "columns": {
-      "prompt": "instruction",
-      "query": "input",
-      "response": "output",
-      "system": "system",
-      "history": "history"
-    }
-  },
-  "animal_generate": {
-    "file_name": "animal_generate.json",
-    "columns": {
-      "prompt": "instruction",
-      "query": "input",
-      "response": "output",
-      "history": "history"
-    }
-  }
 }

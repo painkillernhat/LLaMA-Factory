@@ -28,53 +28,53 @@ def main(args):
     sft_adapter_path = f"saves/{model_name}/{dataset}/sft"
     ############################################################################
     #### Run SFT
-    # sft_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
-    #     src/train_bash.py \
-    #     --stage sft \
-    #     --do_train \
-    #     --template {args.template} \
-    #     --model_name_or_path {args.model_name_or_path} \
-    #     --dataset {dataset} \
-    #     --output_dir {sft_adapter_path} \
-    #     --overwrite_cache \
-    #     --overwrite_output_dir \
-    #     --bf16 \
-    #     --learning_rate {args.learning_rate} \
-    #     --finetuning_type {args.finetuning_type} \
-    #     --lora_target {args.lora_target} \
-    #     --lr_scheduler_type cosine \
-    #     --max_grad_norm 1.0 \
-    #     --weight_decay 0.001 \
-    #     --warmup_ratio 0.02 \
-    #     --per_device_train_batch_size {args.per_device_train_batch_size} \
-    #     --per_device_eval_batch_size {args.per_device_eval_batch_size} \
-    #     --gradient_accumulation_steps {args.gradient_accumulation_steps} \
-    #     --num_train_epochs {args.num_train_epochs} \
-    #     --max_samples {args.max_samples} \
-    #     --save_steps {args.save_steps} \
-    #     --logging_steps {args.logging_steps} \
-    #     --neftune_noise_alpha 0 \
-    #     --plot_loss \
-    #     --report_to none
-    # """
+    sft_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
+        src/train_bash.py \
+        --stage sft \
+        --do_train \
+        --template {args.template} \
+        --model_name_or_path {args.model_name_or_path} \
+        --dataset {dataset} \
+        --output_dir {sft_adapter_path} \
+        --overwrite_cache \
+        --overwrite_output_dir \
+        --bf16 \
+        --learning_rate {args.learning_rate} \
+        --finetuning_type {args.finetuning_type} \
+        --lora_target {args.lora_target} \
+        --lr_scheduler_type cosine \
+        --max_grad_norm 1.0 \
+        --weight_decay 0.001 \
+        --warmup_ratio 0.02 \
+        --per_device_train_batch_size {args.per_device_train_batch_size} \
+        --per_device_eval_batch_size {args.per_device_eval_batch_size} \
+        --gradient_accumulation_steps {args.gradient_accumulation_steps} \
+        --num_train_epochs {args.num_train_epochs} \
+        --max_samples {args.max_samples} \
+        --save_steps {args.save_steps} \
+        --logging_steps {args.logging_steps} \
+        --neftune_noise_alpha 0 \
+        --plot_loss \
+        --report_to none
+    """
     
-    # print("SFT the model...")
-    # run_cli_command(sft_command)
+    print("SFT the model...")
+    run_cli_command(sft_command)
     ############################################################################
     #### Export model
-    # sft_full_path = f"{sft_adapter_path}/full"
+    sft_full_path = f"{sft_adapter_path}/full"
 
-    # export_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} python src/export_model.py \
-    #         --model_name_or_path {sft_full_path} \
-    #         --export_dir {sft_full_path} \
-    #         --template {args.template} \
-    #         --finetuning_type {args.finetuning_type} \
-    #         --export_size 2 \
-    #         --export_legacy_format False
-    #     """
+    export_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} python src/export_model.py \
+            --model_name_or_path {sft_full_path} \
+            --export_dir {sft_full_path} \
+            --template {args.template} \
+            --finetuning_type {args.finetuning_type} \
+            --export_size 2 \
+            --export_legacy_format False
+        """
         
-    # print(f"Export model...")
-    # run_cli_command(export_command) 
+    print(f"Export model...")
+    run_cli_command(export_command) 
     ############################################################################
     dataset_info = args.data_info_path
     training_dataset = f'data/{dataset}.json'
@@ -84,7 +84,7 @@ def main(args):
     #### Inference
     
     current_dir = os.getcwd()
-    expand_dataset(os.path.join(current_dir, new_training_dataset), n, k, num_repeat, new_dataset)
+    expand_dataset(args, os.path.join(current_dir, new_training_dataset), n, k, num_repeat, new_dataset, sft_full_path)
     print(f"Infer new dataset...")
 
 if __name__ == "__main__":
