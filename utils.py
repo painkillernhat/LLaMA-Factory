@@ -14,9 +14,13 @@ from tqdm import tqdm
 from openai import OpenAI
 from huggingface_hub import login
 
-########## variables ##########
+def jsonl_to_json(jsonl_file_path, output_json_file_path):
+    with open(jsonl_file_path, 'r') as jsonl_file:
+        lines = jsonl_file.readlines()
 
-########## functions ##########
+    json_data = [json.loads(line.strip()) for line in lines]
+    with open(output_json_file_path, 'w') as json_file:
+        json.dump(json_data, json_file, indent=4)
 
 def run_cli_command(command):
     os.system(command)
@@ -93,23 +97,22 @@ def add_new_dataset_info(dataset_info_path, name, path):
 
 def expand_dataset(args, training_data_path, n, k, num_repeat, output_file_path, adapter_path):
     
-    original_data = load_json(training_data_path)
+    training_data = load_json(training_data_path)
     all_data = []
-
-    client = None
 
     histories = [[] for _ in range(n * num_repeat)]
     for iteration in range(1, k + 1):
         batch_samples = []
         for p in range(n):
-            selected_entry = random.sample(original_data, num_repeat)
+            selected_entry = random.sample(training_data, num_repeat)
+            
             for i, entry in enumerate(selected_entry):
                 new_entry = {
                     "instruction": entry['instruction'],
                     "input": "",
+                    "output": "",
                     "history": histories[p * num_repeat + i].copy()
                 }
-                histories[p * num_repeat + i].append([entry['instruction'], entry['output']])
                 batch_samples.append(new_entry)
         
         inference_path = 'data/animal/inference'
@@ -121,10 +124,14 @@ def expand_dataset(args, training_data_path, n, k, num_repeat, output_file_path,
         add_new_dataset_info(args.data_info_path, f'batch_data_iteration_{iteration}', os.path.relpath(batch_file_path, 'data'))
         print(f"Batch data for iteration {iteration} saved to {batch_file_path}")
 
-        responses = perform_inference(args, adapter_path, f'batch_data_iteration_{iteration}')
-        for i, response in enumerate(responses):
-            batch_samples[i]['output'] = response
+        perform_inference(args, adapter_path, f'batch_data_iteration_{iteration}')
+        predictions_data_path = f"{args.output_dir}/predict/generated_predictions_batch_data_iteration_{iteration}.json"
+        predictions_data = load_json(predictions_data_path)
         
+        for i in range(0, len(predictions_data)):
+            batch_samples[i]['output'] = predictions_data[i]['predict']
+            histories[i].append([batch_samples[i]['instruction'], batch_samples[i]['output']])
+
         all_data.extend(batch_samples)
         save_json(all_data, output_file_path)
         print(f"Iteration {iteration} completed and saved to {output_file_path}")
@@ -133,7 +140,7 @@ def expand_dataset(args, training_data_path, n, k, num_repeat, output_file_path,
     
 def perform_inference(args, sft_full_path, testset):
     if args.is_using_vllm:
-        template = "llama2" if "llama" in args.model_name_or_path.lower() else "mistral"
+        template = "default" if "default" in args.template.lower() else "llama2"
 
         deploy_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} API_PORT={args.api_port} python src/api_demo.py \
             --model_name_or_path {sft_full_path} \
@@ -147,7 +154,9 @@ def perform_inference(args, sft_full_path, testset):
 
         # Inference
         client = OpenAI(base_url=f"http://localhost:{args.api_port}/v1", api_key="token-abc123")
-        test_data = load_json(testset)
+        data_info_path = args.data_info_path
+        data_info = load_json(data_info_path)
+        test_data = load_json(data_info[testset]['file_name'])
 
         predictions = []
         for sample in tqdm(test_data):
@@ -158,16 +167,32 @@ def perform_inference(args, sft_full_path, testset):
             sample['output'] = completion.choices[0].message.content
             predictions.append(sample)
 
-        output_file_path = f"{args.dataset_dir}/generated_predictions_{testset}.json"
-        save_json(predictions, output_file_path)
-        print(f"Predictions saved to: {output_file_path}")
+        # output_file_path = f"{args.dataset_dir}/generated_predictions_{testset}.json"
+        # save_json(predictions, output_file_path)
+        # print(f"Predictions saved to: {output_file_path}")
 
         # Shutdown server
         shutdown_server(f"kill {server_process.pid}")
     else:
+        predict_output_dir = f"{args.output_dir}/predict"
         generate_text_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} python src/train_bash.py \
-            --stage sft --do_predict --model_name_or_path {sft_full_path} --dataset {testset} \
-            --dataset_dir {args.dataset_dir} --template {args.template} --finetuning_type {args.finetuning_type} \
-            --output_dir {sft_full_path} --cutoff_len {args.cutoff_len} \
-            --per_device_eval_batch_size {args.per_device_eval_batch_size} --predict_with_generate --report_to none --fp16"""
+            --stage sft \
+            --do_predict \
+            --model_name_or_path {args.model_name_or_path} \
+            --adapter_name_or_path {sft_full_path} \
+            --dataset {testset} \
+            --dataset_dir {args.dataset_dir} \
+            --template {args.template} \
+            --finetuning_type {args.finetuning_type} \
+            --output_dir {predict_output_dir} \
+            --cutoff_len {args.cutoff_len} \
+            --overwrite_cache \
+            --overwrite_output_dir \
+            --preprocessing_num_workers 16 \
+            --per_device_eval_batch_size {args.per_device_eval_batch_size} \
+            --predict_with_generate
+        """
         run_cli_command(generate_text_command)
+        jsonl_to_json(f"{predict_output_dir}/generated_predictions.jsonl", f"{predict_output_dir}/generated_predictions.json")
+        generated_predictions_data = load_json(f"{predict_output_dir}/generated_predictions.json")
+        save_json(generated_predictions_data, f"{predict_output_dir}/generated_predictions_{testset}.json")

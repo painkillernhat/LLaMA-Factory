@@ -1,1 +1,8 @@
-CUDA_VISIBLE_DEVICES=1,2 API_PORT=8005 python src/api_demo.py --model_name_or_path saves/Llama-2-7b-hf/animal_train/sft/full --template llama2 --infer_backend vllm --vllm_enforce_eager
+CUDA_VISIBLE_DEVICES=0 API_PORT=8005 python src/api_demo.py --model_name_or_path saves/Llama-2-7b-hf/animal_train/sft/full --template llama2 --infer_backend vllm --vllm_enforce_eager
+
+export PATH=/usr/local/cuda-12.1/bin:$PATH
+export HF_HOME="/lfs/local/0/sttruong/env/.huggingface"
+export HF_DATASETS_CACHE="/lfs/local/0/sttruong/env/.huggingface/datasets"
+export TRITON_CACHE_DIR="/lfs/local/0/sttruong/.triton_1"
+export LIBRARY_PATH=/dfs/user/sttruong/miniconda3/envs/bosd/lib/python3.10/site-packages/torch/lib:/dfs/user/sttruong/miniconda3/envs/bosd/lib:$LIBRARY_PATH
+export LD_LIBRARY_PATH=/dfs/user/sttruong/miniconda3/envs/bosd/lib/python3.10/site-packages/torch/lib:/dfs/user/sttruong/miniconda3/envs/bosd/lib:$LD_LIBRARY_PATH
