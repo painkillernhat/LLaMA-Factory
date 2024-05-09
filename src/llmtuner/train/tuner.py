@@ -10,10 +10,11 @@ from ..hparams import get_infer_args, get_train_args
 from ..model import load_model, load_tokenizer
 from .dpo import run_dpo
 from .orpo import run_orpo
-from .ppo import run_ppo
+# from .ppo import run_ppo
 from .pt import run_pt
 from .rm import run_rm
 from .sft import run_sft
+from .ppo.workflow import Actor
 
 
 if TYPE_CHECKING:
@@ -34,7 +35,14 @@ def run_exp(args: Optional[Dict[str, Any]] = None, callbacks: Optional[List["Tra
     elif finetuning_args.stage == "rm":
         run_rm(model_args, data_args, training_args, finetuning_args, callbacks)
     elif finetuning_args.stage == "ppo":
-        run_ppo(model_args, data_args, training_args, finetuning_args, generating_args, callbacks)
+        print(data_args)
+        # run_ppo(model_args, data_args, training_args, finetuning_args, generating_args, callbacks)
+        dataset_path = f"{data_args.dataset_dir}/{data_args.dataset}.json"
+
+        # call actor
+        actor = Actor(model_args, finetuning_args, training_args, generating_args)
+        actor.load_policy()
+        actor.train_policy(dataset_path, data_args, callbacks)
     elif finetuning_args.stage == "dpo":
         run_dpo(model_args, data_args, training_args, finetuning_args, callbacks)
     elif finetuning_args.stage == "orpo":

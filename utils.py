@@ -13,6 +13,8 @@ import pandas as pd
 from tqdm import tqdm
 from openai import OpenAI
 from huggingface_hub import login
+import re
+from datasets import Dataset
 
 def jsonl_to_json(jsonl_file_path, output_json_file_path):
     with open(jsonl_file_path, 'r') as jsonl_file:
@@ -63,7 +65,7 @@ def eliminate_outcome(old_file, new_file):
     filtered_data = [entry for entry in data if entry['instruction'] not in ["I will adopt the animal.", "I will not adopt the animal."]]
     with open(new_file, 'w') as file:
         json.dump(filtered_data, file, indent=4)
-    print("Data has been updated and saved.")
+    # print("Data has been updated and saved.")
             
 def load_json(file_path):
     with open(file_path, 'r') as file:
@@ -73,15 +75,27 @@ def save_json(data, file_path):
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)
 
-def add_new_dataset_info(dataset_info_path, name, path):
+def add_new_dataset_info(dataset_info_path, name, path, stage):
     # Read data from dataset_info.json
     with open(dataset_info_path, 'r') as file:
         data = json.load(file)
-
+    
     if name in data:
         del data[name]  # Remove the existing entry if it exists
-
-    data[name] = {
+    
+    if stage == "ppo":
+        data[name] = {
+        "file_name": path,
+        "columns": {
+            "prompt": "instruction",
+            "query": "input",
+            "response": "output",
+            "history": "history",
+            "reward": "reward"
+        }
+    }
+    else:
+        data[name] = {
         "file_name": path,
         "columns": {
             "prompt": "instruction",
@@ -95,17 +109,20 @@ def add_new_dataset_info(dataset_info_path, name, path):
     with open(dataset_info_path, 'w') as outfile:
         json.dump(data, outfile, indent=4)
 
-def expand_dataset(args, training_data_path, n, k, num_repeat, output_file_path, adapter_path):
+def expand_dataset(args, training_data_path, n, num_repeat, output_file_path):
+    inference_path = 'data/animal/inference'
+    if os.path.exists(inference_path) is False:
+        os.mkdir(inference_path)
     
     training_data = load_json(training_data_path)
-    all_data = []
+    full_data = []
+    answer_data = []
 
     histories = [[] for _ in range(n * num_repeat)]
-    for iteration in range(1, k + 1):
+    for iteration in range(1, args.num_iters + 1):
         batch_samples = []
         for p in range(n):
             selected_entry = random.sample(training_data, num_repeat)
-            
             for i, entry in enumerate(selected_entry):
                 new_entry = {
                     "instruction": entry['instruction'],
@@ -115,16 +132,12 @@ def expand_dataset(args, training_data_path, n, k, num_repeat, output_file_path,
                 }
                 batch_samples.append(new_entry)
         
-        inference_path = 'data/animal/inference'
-        if os.path.exists(inference_path) is False:
-            os.mkdir(inference_path)
-        
         batch_file_path = f"{inference_path}/batch_data_iteration_{iteration}.json"
         save_json(batch_samples, batch_file_path)
         add_new_dataset_info(args.data_info_path, f'batch_data_iteration_{iteration}', os.path.relpath(batch_file_path, 'data'))
         print(f"Batch data for iteration {iteration} saved to {batch_file_path}")
 
-        perform_inference(args, adapter_path, f'batch_data_iteration_{iteration}')
+        perform_inference(args, f'batch_data_iteration_{iteration}')
         predictions_data_path = f"{args.output_dir}/predict/generated_predictions_batch_data_iteration_{iteration}.json"
         predictions_data = load_json(predictions_data_path)
         
@@ -132,13 +145,80 @@ def expand_dataset(args, training_data_path, n, k, num_repeat, output_file_path,
             batch_samples[i]['output'] = predictions_data[i]['predict']
             histories[i].append([batch_samples[i]['instruction'], batch_samples[i]['output']])
 
-        all_data.extend(batch_samples)
-        save_json(all_data, output_file_path)
-        print(f"Iteration {iteration} completed and saved to {output_file_path}")
-
-    return all_data
+        answer_data.extend(batch_samples)
     
-def perform_inference(args, sft_full_path, testset):
+    print("Generating answer inference done...")
+    
+    treatment_histories = [[] for _ in range(n * num_repeat)]
+    for iteration in range(1, args.num_iters + 1):
+        batch_treatment_samples = []
+        for i in range((iteration - 1) * n * num_repeat, iteration * n * num_repeat):
+                
+            treatment_histories[i % (n * num_repeat)].append([answer_data[i]['instruction'], answer_data[i]['output']])
+            treatment_adopt_entry = {
+                    "instruction": "I will adopt the animal.",
+                    "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+                    "output": "",
+                    "history": treatment_histories[i % (n * num_repeat)].copy()
+                }
+            treatment_not_adopt_entry = {
+                    "instruction": "I will not adopt the animal.",
+                    "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+                    "output": "",
+                    "history": treatment_histories[i % (n * num_repeat)].copy()
+                }
+            for mc_repeat in range(2):
+                batch_treatment_samples.append(treatment_adopt_entry)
+                batch_treatment_samples.append(treatment_not_adopt_entry)
+
+        batch_treatment_file_path = f"{inference_path}/batch_treatment_data_iteration_{iteration}.json"
+        save_json(batch_treatment_samples, batch_treatment_file_path)
+        add_new_dataset_info(args.data_info_path, f'batch_treatment_data_iteration_{iteration}', os.path.relpath(batch_treatment_file_path, 'data'))
+        
+        perform_inference(args, f'batch_treatment_data_iteration_{iteration}')
+        predictions_outcome_data_path = f"{args.output_dir}/predict/generated_predictions_batch_treatment_data_iteration_{iteration}.json"
+        predictions_outcome_data = load_json(predictions_outcome_data_path)
+        
+        for i in range(0, len(predictions_outcome_data)):
+            batch_treatment_samples[i]['output'] = predictions_outcome_data[i]['predict']
+
+        full_data.extend(batch_treatment_samples)
+        save_json(full_data, output_file_path)
+
+    print("Generating outcome inference done...")
+
+def convert_output(value):
+    if value in ("-1", "0", "1"):
+        return int(value)
+    return value
+
+def calculate_reward(args, input_file_path, n, num_repeat, output_file_path):
+    input_file = load_json(input_file_path)
+    k = args.num_iters
+    # new_input_file_path = f'{args.dataset_dir}/{args.dataset_name}_reward_new.json'
+    output_file = []
+
+    for index in range(n * num_repeat * 2 * 2, n * num_repeat * k * 2 * 2):   
+        
+        if index % 4 == 0:
+            value = (convert_output(input_file[index]['output']) + convert_output(input_file[index + 1]['output']) + convert_output(input_file[index + 2]['output']) + convert_output(input_file[index + 3]['output'])) / 4
+
+            modified_history = input_file[index]['history'][:-1]
+            modified_history[-1] = (modified_history[-1][0], "") 
+
+            new_entry = {
+                "instruction": input_file[index]['history'][-2][1],
+                "input": "",
+                "output": input_file[index]['history'][-1][0],
+                "history": modified_history,
+                "reward": value
+            }
+            output_file.append(new_entry)
+      
+    save_json(output_file, output_file_path)
+
+
+def perform_inference(args, testset):
     if args.is_using_vllm:
         template = "default" if "default" in args.template.lower() else "llama2"
 
@@ -179,7 +259,7 @@ def perform_inference(args, sft_full_path, testset):
             --stage sft \
             --do_predict \
             --model_name_or_path {args.model_name_or_path} \
-            --adapter_name_or_path {sft_full_path} \
+            --adapter_name_or_path {args.adapter_name_or_path} \
             --dataset {testset} \
             --dataset_dir {args.dataset_dir} \
             --template {args.template} \

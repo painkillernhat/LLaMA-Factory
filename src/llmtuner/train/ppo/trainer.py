@@ -340,72 +340,34 @@ class CustomPPOTrainer(PPOTrainer, Trainer):
 
         Both inputs and outputs are put on CPU.
         """
-        # if self.finetuning_args.reward_model_type == "api":
-        #     token_ids = [torch.cat((q, r), dim=-1).tolist() for q, r in zip(queries, responses)]
-        #     messages = self.tokenizer.batch_decode(token_ids, skip_special_tokens=True)
-        #     return get_rewards_from_server(self.reward_model, messages)
+        if self.finetuning_args.reward_model_type == "api":
+            token_ids = [torch.cat((q, r), dim=-1).tolist() for q, r in zip(queries, responses)]
+            messages = self.tokenizer.batch_decode(token_ids, skip_special_tokens=True)
+            return get_rewards_from_server(self.reward_model, messages)
 
-        # if self.finetuning_args.reward_model_type == "lora":
-        #     replace_model(unwrapped_model, target="reward")
-        #     reward_model = self.model
-        # else:
-        #     reward_model = self.reward_model
+        if self.finetuning_args.reward_model_type == "lora":
+            replace_model(unwrapped_model, target="reward")
+            reward_model = self.model
+        else:
+            reward_model = self.reward_model
 
-        # batch = self.prepare_model_inputs(queries, responses)
+        batch = self.prepare_model_inputs(queries, responses)
 
-        # with torch.cuda.amp.autocast(dtype=self.model_args.compute_dtype):  # support bf16
-        #     _, _, values = reward_model(**batch, output_hidden_states=True, return_dict=True, use_cache=False)
+        with torch.cuda.amp.autocast(dtype=self.model_args.compute_dtype):  # support bf16
+            _, _, values = reward_model(**batch, output_hidden_states=True, return_dict=True, use_cache=False)
 
-        # if getattr(unwrapped_model.config, "model_type", None) == "chatglm":  # assume same architecture
-        #     values = torch.transpose(values, 0, 1)
+        if getattr(unwrapped_model.config, "model_type", None) == "chatglm":  # assume same architecture
+            values = torch.transpose(values, 0, 1)
 
-        # rewards = []
-        # for i in range(values.size(0)):
-        #     end_indexes = (batch["input_ids"][i] != self.tokenizer.pad_token_id).nonzero()
-        #     end_index = end_indexes[-1].item() if len(end_indexes) else 0
-        #     rewards.append(values[i, end_index].float().detach().cpu())  # use fp32 type
-
-        # if self.finetuning_args.reward_model_type == "lora":
-        #     replace_model(unwrapped_model, target="default")
-        
-        # Load the dataset
-        # if 
-        
-        with open("data/animal_guessing_train.json", "r") as f:
-            dataset = [json.loads(line) for line in f]
-
-        # Preprocess the dataset
-        context_database = []
-        for entry in dataset:
-            history = entry["history"]
-            treatment, outcome = history[-1]
-
-            for i in range(1, len(history) - 1):
-                context = " ".join([f"q{j+1} a{j+1}" for j, (_, a) in enumerate(history[:i])] + [treatment])
-                context_database.append((context, outcome))
-
-        # Compute rewards
         rewards = []
-        for context, outcome in context_database:
-            input_ids = self.tokenizer(context, return_tensors="pt").input_ids.to(torch.bfloat16)
-            output_ids = self.tokenizer(str(outcome), return_tensors="pt").input_ids.to(torch.bfloat16)
-
-            with torch.cuda.amp.autocast(dtype=torch.bfloat16):
-                _, _, values = unwrapped_model(
-                    input_ids=input_ids,
-                    decoder_input_ids=output_ids,
-                    output_hidden_states=True,
-                    return_dict=True,
-                    use_cache=False,
-                )
-
-            if getattr(unwrapped_model.config, "model_type", None) == "chatglm":  # assume same architecture
-                values = torch.transpose(values, 0, 1)
-
-            end_indexes = (input_ids != self.tokenizer.pad_token_id).nonzero()
+        for i in range(values.size(0)):
+            end_indexes = (batch["input_ids"][i] != self.tokenizer.pad_token_id).nonzero()
             end_index = end_indexes[-1].item() if len(end_indexes) else 0
-            rewards.append(values[0, end_index].float().detach().cpu())  # use fp32 type
+            rewards.append(values[i, end_index].float().detach().cpu())  # use fp32 type
 
+        if self.finetuning_args.reward_model_type == "lora":
+            replace_model(unwrapped_model, target="default")
+        
         return rewards
 
     @PPODecorators.empty_device_cache()

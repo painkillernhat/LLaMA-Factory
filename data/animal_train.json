@@ -679,9 +679,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -1434,9 +1434,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -2190,8 +2190,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "1",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "0",
         "system": "",
         "history": [
             [
@@ -2945,7 +2945,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -3699,9 +3699,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -4455,8 +4455,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "1",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "0",
         "system": "",
         "history": [
             [
@@ -5209,9 +5209,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "0",
         "system": "",
         "history": [
             [
@@ -5965,8 +5965,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -6719,8 +6719,8 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "1",
         "system": "",
         "history": [
@@ -7475,8 +7475,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -8230,8 +8230,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -8984,9 +8984,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -9739,9 +9739,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -10495,7 +10495,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -11249,9 +11249,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -12004,9 +12004,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -12759,9 +12759,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -13514,9 +13514,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -14270,7 +14270,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -15025,7 +15025,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -15780,7 +15780,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -16534,9 +16534,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "0",
         "system": "",
         "history": [
             [
@@ -17290,7 +17290,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "1",
         "system": "",
         "history": [
@@ -18044,9 +18044,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -18799,9 +18799,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -19555,8 +19555,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -20309,9 +20309,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -21064,9 +21064,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -21820,8 +21820,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -22575,8 +22575,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -23329,9 +23329,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -24085,7 +24085,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -24839,9 +24839,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -25595,8 +25595,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -26349,9 +26349,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -27105,8 +27105,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "1",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "0",
         "system": "",
         "history": [
             [
@@ -27859,9 +27859,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -28615,8 +28615,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -29369,9 +29369,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -30124,9 +30124,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -30879,9 +30879,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -31635,8 +31635,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -32390,7 +32390,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -33145,8 +33145,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -33900,8 +33900,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "1",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "0",
         "system": "",
         "history": [
             [
@@ -34655,8 +34655,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -35409,9 +35409,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -36165,7 +36165,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -36920,8 +36920,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -37674,9 +37674,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -38430,8 +38430,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -39184,9 +39184,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -39939,9 +39939,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -40695,8 +40695,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -41450,8 +41450,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -42205,7 +42205,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -42960,7 +42960,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -43715,7 +43715,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -44469,9 +44469,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -45225,8 +45225,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "1",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "0",
         "system": "",
         "history": [
             [
@@ -45980,7 +45980,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -46734,9 +46734,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "0",
         "system": "",
         "history": [
             [
@@ -47490,8 +47490,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "1",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "0",
         "system": "",
         "history": [
             [
@@ -48245,7 +48245,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -48999,9 +48999,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -49754,9 +49754,9 @@
         ]
     },
     {
-        "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "instruction": "I will adopt the animal.",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
+        "output": "-1",
         "system": "",
         "history": [
             [
@@ -50510,7 +50510,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -51265,7 +51265,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "-1",
         "system": "",
         "history": [
@@ -52020,8 +52020,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -52774,9 +52774,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -53529,9 +53529,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -54284,9 +54284,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -55039,9 +55039,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -55795,7 +55795,7 @@
     },
     {
         "instruction": "I will adopt the animal.",
-        "input": "",
+        "input": "If the animal is a home pet, the output is 1. If not, the output is -1.",
         "output": "1",
         "system": "",
         "history": [
@@ -56549,9 +56549,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -57305,8 +57305,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -58060,8 +58060,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -58814,9 +58814,9 @@
         ]
     },
     {
-        "instruction": "I will adopt the animal.",
-        "input": "",
-        "output": "-1",
+        "instruction": "I will not adopt the animal.",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [
@@ -59570,8 +59570,8 @@
     },
     {
         "instruction": "I will not adopt the animal.",
-        "input": "",
-        "output": "0",
+        "input": "If the animal is a home pet, the output is 0. If not, the output is 1.",
+        "output": "1",
         "system": "",
         "history": [
             [

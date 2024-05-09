@@ -43,11 +43,12 @@ class Template:
         Returns a single pair of token ids representing prompt and response respectively.
         """
         encoded_pairs = self._encode(tokenizer, messages, system, tools, cutoff_len, reserved_label_len)
+        # print(encoded_pairs)
         prompt_ids = []
         for query_ids, resp_ids in encoded_pairs[:-1]:
             prompt_ids += query_ids + resp_ids
-        prompt_ids = prompt_ids + encoded_pairs[-1][0]
-        answer_ids = encoded_pairs[-1][1]
+        # prompt_ids = prompt_ids + encoded_pairs[-1][0]
+        answer_ids = encoded_pairs[-1][0]
         return prompt_ids, answer_ids
 
     def encode_multiturn(
@@ -80,6 +81,7 @@ class Template:
         """
         system = system or self.default_system
         encoded_messages = []
+        
         for i, message in enumerate(messages):
             elements = []
             if i == 0 and (system or tools or self.force_system):
@@ -100,8 +102,8 @@ class Template:
                 raise NotImplementedError("Unexpected role: {}".format(message["role"]))
 
             encoded_messages.append(self._convert_elements_to_ids(tokenizer, elements))
-
-        return self._make_pairs(encoded_messages, cutoff_len, reserved_label_len)
+        
+        # return self._make_pairs(encoded_messages, cutoff_len, reserved_label_len)
 
     def _convert_elements_to_ids(
         self, tokenizer: "PreTrainedTokenizer", elements: List[Union[str, Dict[str, str]]]
@@ -134,10 +136,13 @@ class Template:
     ) -> Sequence[Tuple[List[int], List[int]]]:
         encoded_pairs = []
         total_length = 0
+        # print(encoded_messages)
+        # the length of encoded_msg will be odd
         for i in range(0, len(encoded_messages), 2):
             if total_length >= cutoff_len:
                 break
 
+            # if i % 2 == 0:
             max_source_len, max_target_len = infer_max_len(
                 source_len=len(encoded_messages[i]),
                 target_len=len(encoded_messages[i + 1]),
@@ -148,6 +153,7 @@ class Template:
             target_ids = encoded_messages[i + 1][:max_target_len]
             total_length += len(source_ids) + len(target_ids)
             encoded_pairs.append((source_ids, target_ids))
+            
 
         return encoded_pairs
 
@@ -192,6 +198,7 @@ class Llama2Template(Template):
 
             encoded_messages.append(self._convert_elements_to_ids(tokenizer, elements))
 
+        # print(len(encoded_messages))
         return self._make_pairs(encoded_messages, cutoff_len, reserved_label_len)
 
 
