@@ -29,8 +29,8 @@ def main(args):
     train_dataset = os.path.join(dataset_dir, "/animal_guessing/splits/animal_guessing_train.json")
     test_dataset = os.path.join(dataset_dir, "/animal_guessing/splits/animal_guessing_test.json")
     
-    model_name = "meta-llama/Llama-2-7b-hf"
-    output_dir = os.path.join("saves", model_name, "animal_guessing")
+    model_name = "llama-2-7b"
+    output_dir = os.path.join("saves", model_name, "animal_guessing", "supervised")
     
     # Fine-tune the model on the training set
     ft_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
