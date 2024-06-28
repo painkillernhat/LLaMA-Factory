@@ -6,21 +6,12 @@ def main(args):
     ############################################################################
     #### Prepare dataset
     model_name = args.model_name_or_path.split('/')[-1]
-    
-    if args.dataset_name in ['animal']:
-        dataset = f'animal_train'
-        prepare_data = f"""python data/animal/animal.py --sanity_check {args.sanity_check}"""
-        new_dataset = f'{args.dataset_dir}/animal_reward.json'
-        initial_dataset_file = f'{args.dataset_dir}/{args.dataset_name}/animal_full.json'
-        initial_data = load_json(initial_dataset_file)
-    else:
-        print("No dataset provided.")
-    
-    n = len(initial_data)
-    num_repeat = len(initial_data[0]) - 1
+    csv_dataset = f'data/animal/animal.csv'
+    dataset = f'animal_train'
+    new_dataset = f'data/animal_reward.json'
+    prepare_data = f"""python data/animal/animal.py --sanity_check {args.sanity_check}"""
     k = args.num_iters
-    print(n, num_repeat, k)
-    
+
     testset = dataset.replace("train", "test")
     print(f"Prepare dataset: {prepare_data}.")
     run_cli_command(prepare_data)
@@ -76,16 +67,18 @@ def main(args):
     # print(f"Export model...")
     # run_cli_command(export_command) 
     ############################################################################
-    dataset_info = args.data_info_path
-    training_dataset = f'data/{dataset}.json'
-    new_training_dataset = f'data/{dataset}_new.json'
-    eliminate_outcome(training_dataset, new_training_dataset)
+    #### Inference
+    init_dataset(csv_dataset, new_dataset)
+    print(f"Init new dataset...")
     ############################################################################
     #### Inference
-    
+    dataset_info = args.data_info_path
+    training_dataset = f'data/{dataset}.json'
     current_dir = os.getcwd()
-    expand_dataset(os.path.join(current_dir, new_training_dataset), n, k, num_repeat, new_dataset)
+    output_dataset = os.path.join(current_dir, 'output_dataset.json')
+    expand_dataset(args, os.path.join(current_dir, training_dataset), 99, 2, output_dataset, 17)
     print(f"Infer new dataset...")
+    # Add new dataset info to dataset_info.json to run predict reward model
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -119,7 +112,7 @@ if __name__ == "__main__":
     parser.add_argument("--model_name_or_path", type=str, default="meta-llama/Llama-2-7b-hf", help="Model name or path")
     parser.add_argument("--num_train_epochs", type=float, default=1.0, help="Number of training epochs")    
 
-    parser.add_argument("--num_iters", type=int, default=3, help="Number of iterations")
+    parser.add_argument("--num_iters", type=int, default=5, help="Number of iterations")
     parser.add_argument("--percentage", type=float, default=0.1, help="Percentage of top questions to select")
     parser.add_argument("--dataset", type=str, default="animal_train", help="Dataset name")
     parser.add_argument("--gpu_ids", type=str, default="0,1", help="")
