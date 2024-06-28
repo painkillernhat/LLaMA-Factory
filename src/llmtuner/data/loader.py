@@ -1,7 +1,6 @@
 import inspect
 import os
 from typing import TYPE_CHECKING, Literal, Union
-from functools import partial
 
 from datasets import load_dataset, load_from_disk
 
@@ -10,7 +9,7 @@ from ..extras.logging import get_logger
 from ..extras.misc import has_tokenized_data
 from .aligner import align_dataset
 from .parser import get_dataset_list
-from .preprocess import get_preprocess_and_print_func, preprocess_unsupervised_dataset
+from .preprocess import get_preprocess_and_print_func
 from .template import get_template_and_fix_tokenizer
 from .utils import checksum, merge_dataset
 
@@ -146,7 +145,6 @@ def get_dataset(
                 raise ValueError("The dataset is not applicable in the current training stage.")
 
             all_datasets.append(load_single_dataset(dataset_attr, model_args, data_args))
-        
         dataset = merge_dataset(all_datasets, data_args, training_args)
 
     with training_args.main_process_first(desc="pre-process dataset"):
@@ -154,7 +152,6 @@ def get_dataset(
             tokenizer, template, data_args, training_args, stage
         )
         column_names = list(next(iter(dataset)).keys())
-        
         kwargs = {}
         if not data_args.streaming:
             kwargs = dict(

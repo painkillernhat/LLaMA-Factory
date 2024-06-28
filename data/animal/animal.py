@@ -4,7 +4,7 @@ import random
 import os
 from sklearn.model_selection import train_test_split
 
-# os.environ["HF_DATASETS_CACHE"] = "/afs/cs.stanford.edu/u/sttruong/.cache"
+os.environ["HF_DATASETS_CACHE"] = "/afs/cs.stanford.edu/u/sttruong/.cache"
 
 data = pd.read_csv("data/animal/animal.csv", sep=';')
 
@@ -112,20 +112,18 @@ if __name__ == "__main__":
         adopt_decision = random.choice(["I will adopt the animal.", "I will not adopt the animal."])
         if adopt_decision == "I will not adopt the animal.":
             if row['domestic'] == 1:
-                outcome = "0"  # home pet
+                outcome = "1"  # home pet
             else:
-                outcome = "1"
-            input_prompt = "If the animal is a home pet, the output is 0. If not, the output is 1."
+                outcome = "0"
         else:
             if row['domestic'] == 1:
                 outcome = "1"  # home pet
             else:
                 outcome = "-1"  # wild animal
-            input_prompt = "If the animal is a home pet, the output is 1. If not, the output is -1."
 
         final_decision = {
             "instruction": adopt_decision,
-            "input": input_prompt,
+            "input": "",
             "output": outcome,
             "system": "",
             "history": history

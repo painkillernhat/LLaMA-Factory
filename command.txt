@@ -6,17 +6,3 @@ export HF_DATASETS_CACHE="/lfs/local/0/sttruong/env/.huggingface/datasets"
 export TRITON_CACHE_DIR="/lfs/local/0/sttruong/.triton_1"
 export LIBRARY_PATH=/dfs/user/sttruong/miniconda3/envs/bosd/lib/python3.10/site-packages/torch/lib:/dfs/user/sttruong/miniconda3/envs/bosd/lib:$LIBRARY_PATH
 export LD_LIBRARY_PATH=/dfs/user/sttruong/miniconda3/envs/bosd/lib/python3.10/site-packages/torch/lib:/dfs/user/sttruong/miniconda3/envs/bosd/lib:$LD_LIBRARY_PATH
-
-logging_steps from 1 to 10
-num_epochs from 10 to 5
-
-DataArguments(template='llama2', dataset='animal_ppo', dataset_dir='data', split='train', cutoff_len=4096, reserved_label_len=1, train_on_prompt=False, streaming=False, buffer_size=16384, mix_strategy='concat', interleave_probs=None, overwrite_cache=True, preprocessing_num_workers=32, max_samples=None, eval_num_beams=None, ignore_pad_token_for_loss=True, val_size=0.0, packing=False, tokenized_path=None)
-
-ampere: bf16
-turing: fp16
-
-[1, 518, 25580, 29962, 1317, 278, 13019, 472, 274, 1446, 675, 29973, 518, 29914, 25580, 29962]
-[1, 518, 25580, 29962, 5538, 278, 13019, 7738, 27274, 29973, 518, 29914, 25580, 29962]
-[1, 518, 25580, 29962, 5538, 278, 13019, 2078, 271, 354, 4799, 29973, 518, 29914, 25580, 29962]
-[1, 518, 25580, 29962, 1128, 1784, 21152, 947, 278, 13019, 505, 29973, 518, 29914, 25580, 29962]
-[1, 518, 25580, 29962, 1317, 278, 13019, 4799, 4089, 484, 29973, 518, 29914, 25580, 29962]
