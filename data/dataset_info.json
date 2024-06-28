@@ -1,6 +1,6 @@
 {
-  "animal_train": {
-    "file_name": "animal_train.json",
+  "animal_guessing_train": {
+    "file_name": "animal_guessing_train.json",
     "columns": {
       "prompt": "instruction",
       "query": "input",
@@ -9,8 +9,8 @@
       "history": "history"
     }
   },
-  "animal_test": {
-    "file_name": "animal_test.json",
+  "animal_guessing_test": {
+    "file_name": "animal_guessing_test.json",
     "columns": {
       "prompt": "instruction",
       "query": "input",

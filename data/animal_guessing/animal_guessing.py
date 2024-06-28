@@ -2,11 +2,10 @@ import pandas as pd
 import json
 import random
 import os
-from sklearn.model_selection import train_test_split
 
 os.environ["HF_DATASETS_CACHE"] = "/afs/cs.stanford.edu/u/sttruong/.cache"
 
-data = pd.read_csv("data/animal/animal.csv", sep=';')
+data = pd.read_csv("data/animal_guessing/animal.csv", sep=';')
 
 questions = {
     "Class_Type": "What is the animal's class type?",
@@ -36,29 +35,6 @@ def generate_response(question, value):
     else:
         return "Yes." if value == 1 else "No."
 
-def parse_arguments():
-    import argparse
-    parser = argparse.ArgumentParser(description="Iterative training and evaluation script")
-    parser.add_argument("--sanity_check", type=str, default="False", help="Test")
-    return parser.parse_args()
-
-def flatten_data(data):
-    flat_list = []
-    for animal_group in data:
-        flat_list.extend(animal_group)
-    return flat_list
-
-def split_data(data, train_size=0.8):
-    train_data, test_data = train_test_split(data, train_size=train_size, random_state=42)
-    
-    # flatten the data
-    train_data_flat = flatten_data(train_data)
-    test_data_flat = flatten_data(test_data)
-    
-    with open('data/animal_train.json', 'w') as f:
-        json.dump(train_data_flat, f, indent=4)
-    with open('data/animal_test.json', 'w') as f:
-        json.dump(test_data_flat, f, indent=4)
 
 if __name__ == "__main__":
     dataset = []
@@ -98,10 +74,5 @@ if __name__ == "__main__":
         animal_data.append(final_decision)
         dataset.append(animal_data)
 
-    args = parse_arguments()
- 
-    if args.sanity_check == 'True':
-        split_data(dataset)
-    else:
-        with open('data/animal/animal_full.json', 'w') as outfile:
-            json.dump(dataset, outfile, indent=4)
+    with open('data/animal_guessing.json', 'w') as outfile:
+        json.dump(dataset, outfile, indent=4)
