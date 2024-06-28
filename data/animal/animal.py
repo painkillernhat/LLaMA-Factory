@@ -69,8 +69,8 @@ if __name__ == "__main__":
         for col, question in questions.items():
             answer = generate_response(question, row[col])
             item = {
-                "instruction": question,
-                "input": "",
+                "instruction": "Determine whether the user adopts or does not adopt the animal.",
+                "input": question,
                 "output": answer,
                 "system": "",
                 "history": history.copy()
@@ -81,10 +81,7 @@ if __name__ == "__main__":
         # randomly decide to adopt or not adopt
         adopt_decision = random.choice(["I will adopt the animal.", "I will not adopt the animal."])
         if adopt_decision == "I will not adopt the animal.":
-            if row['domestic'] == 1:
-                outcome = "1"  # home pet
-            else:
-                outcome = "0"
+            outcome = "0"
         else:
             if row['domestic'] == 1:
                 outcome = "1"  # home pet
@@ -92,8 +89,8 @@ if __name__ == "__main__":
                 outcome = "-1"  # wild animal
 
         final_decision = {
-            "instruction": adopt_decision,
-            "input": "",
+            "instruction": "Determine whether the user adopts or does not adopt the animal.",
+            "input": adopt_decision,
             "output": outcome,
             "system": "",
             "history": history
