@@ -1,9 +1,8 @@
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from huggingface_hub import login
 import json
 import argparse
-from llmtuner.train.ppo.trainer import PPOTrainer
 
 login("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")
 
@@ -40,70 +39,36 @@ def generate_outcome(model, tokenizer, context):
     outcome_str = tokenizer.decode(output[0], skip_special_tokens=True)
     return outcome_str
 
-def load_jsonl_data(file_path):
-    with open(file_path, 'r') as file:
-        data = [json.loads(line.strip()) for line in file]
-    return data
+def jsonl_to_json(jsonl_file_path, output_json_file_path):
+    # Read JSONL file
+    with open(jsonl_file_path, 'r') as jsonl_file:
+        lines = jsonl_file.readlines()
+
+    # Parse each line as JSON and store in a list
+    json_data = [json.loads(line.strip()) for line in lines]
+
+    # Write the list of JSON objects to a JSON file
+    with open(output_json_file_path, 'w') as json_file:
+        json.dump(json_data, json_file, indent=4)
 
 def main(args):
-    # Load the dataset
-    dataset_path = args.dataset_path
-    data = load_jsonl_data(dataset_path)
+    # if args.dataset == "animal":
+    #     dataset = "data/animal_guessing/animal_guessing.jsonl"
+    #     new_dataset = "data/animal_guessing/animal_guessing.json"
+    # else:
+    #     print("nothing!")
+        
+    model_name = "meta-llama/Llama-2-7b-hf"
+    # data = jsonl_to_json(dataset, new_dataset)
+    data = "data/animal_guessing/animal_guessing.json"
     
-    # Define the model and tokenizer
-    model_name = args.model_name
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name)
-    
-    # Calculate the rewards
     rewards = calculate_rewards(model_name, data)
     print("Rewards:", rewards)
-    
-    # Define training arguments
-    training_args = TrainingArguments(
-        output_dir=args.output_dir,
-        num_train_epochs=args.num_epochs,
-        per_device_train_batch_size=args.batch_size,
-        learning_rate=args.learning_rate,
-        save_steps=args.save_steps,
-        logging_steps=args.logging_steps,
-        warmup_steps=args.warmup_steps,
-        gradient_accumulation_steps=args.gradient_accumulation_steps,
-        fp16=args.fp16,
-        seed=args.seed,
-    )
-    
-    # Initialize the PPOTrainer
-    trainer = PPOTrainer(
-        model=model,
-        args=training_args,
-        train_dataset=data,
-        data_collator=None,
-        tokenizer=tokenizer,
-    )
-    
-    # Call the train() function with the computed rewards
-    train_result = trainer.train(rewards, resume_from_checkpoint=args.resume_from_checkpoint)
-    
-    # Save the trained model
-    trainer.save_model(args.output_dir)
-    tokenizer.save_pretrained(args.output_dir)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset_path", type=str, default="data/animal_guessing/animal_guessing.jsonl")
-    parser.add_argument("--model_name", type=str, default="meta-llama/Llama-2-7b-hf")
-    parser.add_argument("--output_dir", type=str, default="output")
-    parser.add_argument("--num_epochs", type=int, default=3)
-    parser.add_argument("--batch_size", type=int, default=4)
-    parser.add_argument("--learning_rate", type=float, default=1e-5)
-    parser.add_argument("--save_steps", type=int, default=1000)
-    parser.add_argument("--logging_steps", type=int, default=100)
-    parser.add_argument("--warmup_steps", type=int, default=500)
-    parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
-    parser.add_argument("--fp16", action="store_true")
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--resume_from_checkpoint", type=str, default=None)
+    parser.add_argument("--dataset", type=str, default="animal")
     args = parser.parse_args()
     
     main(args)
