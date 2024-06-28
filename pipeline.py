@@ -58,7 +58,13 @@ def main(args):
         --lr_scheduler_type cosine \
         --max_grad_norm 1.0 \
         --weight_decay 0.001 \
+<<<<<<< HEAD
         --warmup_ratio 0.02 \
+=======
+        --logging_steps {args.logging_steps} \
+        --warmup_ratio 0.02 \
+        --save_steps {args.save_steps} \
+>>>>>>> 267882ab129f0cdd9ec77b1e4f02805e1fb7826d
         --per_device_train_batch_size {args.per_device_train_batch_size} \
         --per_device_eval_batch_size {args.per_device_eval_batch_size} \
         --gradient_accumulation_steps {args.gradient_accumulation_steps} \
@@ -136,11 +142,14 @@ if __name__ == "__main__":
     parser.add_argument("--use_accelerate", type=bool, default=True, help="is using accelerate")
     parser.add_argument("--logging_steps", type=int, default=100, help="Logging steps")
     parser.add_argument("--save_steps", type=int, default=100, help="Save steps")
+<<<<<<< HEAD
     # parser.add_argument("--ppo_num_train_epochs", type=int, default=3, help="Number of training epochs for PPO")
     # parser.add_argument("--ppo_per_device_train_batch_size", type=int, default=8, help="Batch size for PPO training")
     # parser.add_argument("--ppo_learning_rate", type=float, default=1e-5, help="Learning rate for PPO")
     # parser.add_argument("--seed", type=int, default=42, help="Random seed")
     # parser.add_argument("--reward_model", type=str, default="meta-llama/Llama-2-7b-hf", help="Path or name of the reward model")
+=======
+>>>>>>> 267882ab129f0cdd9ec77b1e4f02805e1fb7826d
     args = parser.parse_args()
 
     main(args)
