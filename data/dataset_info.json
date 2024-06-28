@@ -18,14 +18,5 @@
       "system": "system",
       "history": "history"
     }
-  },
-  "animal_generate": {
-    "file_name": "animal_generate.json",
-    "columns": {
-      "prompt": "instruction",
-      "query": "input",
-      "response": "output",
-      "history": "history"
-    }
   }
 }
