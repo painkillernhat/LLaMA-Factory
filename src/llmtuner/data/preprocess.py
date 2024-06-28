@@ -146,40 +146,32 @@ def preprocess_unsupervised_dataset(
     data_args: "DataArguments",
 ) -> Dict[str, List[List[int]]]:
     # build inputs with format `<bos> X` and labels with format `Y <eos>`
-    model_inputs = {"input_ids": [], "attention_mask": [], "output_ids":[], "labels": []}
+    model_inputs = {"input_ids": [], "attention_mask": [], "labels": []}
+
     for i in range(len(examples["prompt"])):
-        
-        if len(examples["prompt"][i]) % 2 == 1:
+        if len(examples["prompt"][i]) % 2 != 1:
             continue
-        
+
         if len(examples["response"][i]) == 1:
             messages = examples["prompt"][i] + examples["response"][i]
         else:
-            messages = examples["prompt"][i] + \
-                [{"role": Role.ASSISTANT.value, "content": ""}]
+            messages = examples["prompt"][i] + [{"role": Role.ASSISTANT.value, "content": ""}]
 
-        messages += [{"role": Role.ASSISTANT.value, "content": ""}]
-        
-        prompt_ids, answer_ids = template.encode_oneturn(
+        input_ids, labels = template.encode_oneturn(
             tokenizer,
             messages,
-            examples["system"][i][0],
-            examples["tools"][i][0],
+            examples["system"][i],
+            examples["tools"][i],
             data_args.cutoff_len,
             data_args.reserved_label_len,
         )
+
         if template.efficient_eos:
             labels += [tokenizer.eos_token_id]
-        
-        # # breakpoint
-        # breakpoint()
-        # print(prompt_ids, answer_ids)
-        tokenizer.decode(answer_ids)
-        
-        model_inputs["input_ids"].append(prompt_ids)
-        model_inputs["attention_mask"].append([1] * len(prompt_ids))
-        model_inputs["output_ids"].append(answer_ids)
-        model_inputs["labels"].append(examples["reward"][i])
+
+        model_inputs["input_ids"].append(input_ids)
+        model_inputs["attention_mask"].append([1] * len(input_ids))
+        model_inputs["labels"].append(labels)
 
     return model_inputs
 
@@ -247,12 +239,8 @@ def print_pairwise_dataset_example(example: Dict[str, List[int]], tokenizer: "Pr
 
 
 def print_unsupervised_dataset_example(example: Dict[str, List[int]], tokenizer: "PreTrainedTokenizer") -> None:
-    output_ids = example["output_ids"]
-    if isinstance(output_ids[0], list):
-        output_ids = [item for sublist in output_ids for item in sublist]  # Flatten the list
-
-    print("output_ids:\n{}".format(output_ids))
-    print("outputs:\n{}".format(tokenizer.decode(output_ids, skip_special_tokens=False)))
+    print("input_ids:\n{}".format(example["input_ids"]))
+    print("inputs:\n{}".format(tokenizer.decode(example["input_ids"], skip_special_tokens=False)))
 
 
 def get_preprocess_and_print_func(
@@ -281,11 +269,10 @@ def get_preprocess_and_print_func(
             preprocess_pairwise_dataset, tokenizer=tokenizer, template=template, data_args=data_args
         )
         print_function = partial(print_pairwise_dataset_example, tokenizer=tokenizer)
-    else: # stage == "ppo"
+    else:
         preprocess_func = partial(
             preprocess_unsupervised_dataset, tokenizer=tokenizer, template=template, data_args=data_args
         )
         print_function = partial(print_unsupervised_dataset_example, tokenizer=tokenizer)
 
     return preprocess_func, print_function
-

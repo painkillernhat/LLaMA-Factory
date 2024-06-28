@@ -90,7 +90,6 @@ class CustomPPOTrainer(PPOTrainer, Trainer):
             data_collator=data_collator,
             lr_scheduler=scheduler,
         )
-        # self.dataset_path = dataset_path
 
         self.args = training_args
         self.model_args = model_args
@@ -367,7 +366,7 @@ class CustomPPOTrainer(PPOTrainer, Trainer):
 
         if self.finetuning_args.reward_model_type == "lora":
             replace_model(unwrapped_model, target="default")
-        
+
         return rewards
 
     @PPODecorators.empty_device_cache()
