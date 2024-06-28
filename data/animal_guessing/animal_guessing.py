@@ -1,57 +1,46 @@
 import json
 import os
-from datasets import load_dataset, Dataset
+import datasets
+from typing import Any, Dict, Generator, List, Tuple
 
-os.environ["HF_DATASETS_CACHE"] = "/afs/cs.stanford.edu/u/sttruong/.cache"
 
-def generate_records(input_file, output_file):
-    with open(input_file) as file:
-        data = json.load(file)
+_DESCRIPTION = "An example of dataset."
+file_path = "/home/thu/LLaMA-Factory/data/animal_guessing/animal_guessing.jsonl"
 
-    all_records = []
 
-    for item in data:
-        instruction = item['instruction']
-        input_value = item['input']
-        output_value = item['output']
-        system_value = item['system']
-        history = item['history']
+class AnimalGuessingDataset(datasets.GeneratorBasedBuilder):
 
-        records = []
+    VERSION = datasets.Version("0.0.0")
 
-        for i in range(len(history)):
-            record = {
-                'instruction': instruction,
-                'input': history[i][0],
-                'output': history[i][1],
-                'system': system_value,
-                'history': history[:i]
-            }
-            records.append(record)
+    def _info(self) -> datasets.DatasetInfo:
+        features = datasets.Features({
+            "instruction": datasets.Value("string"),
+            "input": datasets.Value("string"),
+            "output": datasets.Value("string"),
+            "system": datasets.Value("string"),
+            "history": datasets.Sequence(datasets.Sequence(datasets.Value("string")))
+        })
+        return datasets.DatasetInfo(
+            description=_DESCRIPTION,
+            features=features
+        )
 
-        final_record = {
-            'instruction': instruction,
-            'input': input_value,
-            'output': output_value,
-            'system': system_value,
-            'history': history
-        }
-        records.append(final_record)
+    def _split_generators(self, dl_manager: datasets.DownloadManager) -> List[datasets.SplitGenerator]:
+        return [
+            datasets.SplitGenerator(
+                name=datasets.Split.TRAIN,
+                gen_kwargs={
+                    "filepath": file_path
+                }
+            )
+        ]
 
-        grouped_records = {
-            'original_record': item,
-            'prompted_record': records
-        }
+    def _generate_examples(self, filepath: str) -> Generator[Tuple[int, Dict[str, Any]], None, None]:
+        with open(filepath, "r", encoding="utf-8") as file:
+            example_dataset = json.load(file)
+        for key, example in enumerate(example_dataset):
+            yield key, example
 
-        all_records.append(grouped_records)
-
-    prompt_records = []
-    for group in all_records:
-        prompt_records.extend(group['prompted_record'])
-
-    # return prompted_records
-    with open(output_file, 'w') as file:
-        json.dump(prompt_records, file, indent=2)
 
 def save_dataset_to_json(dataset, json_file_path):
     samples = [example for example in dataset]
@@ -59,42 +48,17 @@ def save_dataset_to_json(dataset, json_file_path):
     with open(json_file_path, 'w') as json_file:
         json.dump(samples, json_file, indent=4)
 
-def parse_arguments():
-    import argparse
-    parser = argparse.ArgumentParser(description="Iterative training and evaluation script")
-    parser.add_argument("--sanity_check", type=str, default="False", help="Test")
-    return parser.parse_args()
 
 if __name__ == "__main__":
+    dataset = datasets.load_dataset(__file__, data_files=file_path)
 
-    current_directory = os.getcwd()
-    
-    input_file = os.path.join(current_directory, 'animal_guessing/animal_guessing.json')
-    output_file = os.path.join(current_directory, 'animal_guessing_prompt.json')
-    
-    generate_records(input_file, output_file)
-    dataset = load_dataset('json', data_files=output_file)
+    dataset = dataset["train"].train_test_split(test_size=0.2)
 
-    # Load the original dataset
-    args = parse_arguments()
-
-    if args.sanity_check == 'True':
-        train_test_dataset = dataset['train'].train_test_split(test_size=0.5)
-        train_dataset = train_test_dataset['train']
-        test_dataset = train_test_dataset['test']
-    else:
-        train_dataset = dataset['train']
-        test_dataset = None
+    output_dir = os.path.join(os.path.dirname(__file__), "../")
+    os.makedirs(output_dir, exist_ok=True)
 
     splits = ['train', 'test']
     for split in splits:
-        if split == 'train':
-            dataset_split = train_dataset
-        elif split == 'test' and test_dataset is not None:
-            dataset_split = test_dataset
-        else:
-            continue
-
-        output_dataset_path = os.path.join(current_directory, f"animal_guessing_{split}.json")
-        save_dataset_to_json(dataset_split, output_dataset_path)
-        print(f"{split}: {len(dataset_split)}")
+        output_dataset_path = os.path.join(output_dir, f"animal_guessing_{split}.json")
+        save_dataset_to_json(dataset[split], output_dataset_path)
+        print(f"{split}: {len(dataset[split])}")
