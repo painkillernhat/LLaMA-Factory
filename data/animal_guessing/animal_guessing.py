@@ -1,78 +1,100 @@
-import pandas as pd
 import json
-import random
 import os
+from datasets import load_dataset, Dataset
 
 os.environ["HF_DATASETS_CACHE"] = "/afs/cs.stanford.edu/u/sttruong/.cache"
 
-data = pd.read_csv("data/animal_guessing/animal.csv", sep=';')
+def generate_records(input_file, output_file):
+    with open(input_file) as file:
+        data = json.load(file)
 
-questions = {
-    "Class_Type": "What is the animal's class type?",
-    "hair": "Does the animal have hair?",
-    "feathers": "Does the animal have feathers?",
-    "eggs": "Does the animal lay eggs?",
-    "milk": "Does the animal produce milk?",
-    "airborne": "Is the animal airborne?",
-    "aquatic": "Is the animal aquatic?",
-    "predator": "Is the animal a predator?",
-    "toothed": "Does the animal have teeth?",
-    "backbone": "Does the animal have a backbone?",
-    "breathes": "Does the animal breathe air?",
-    "venomous": "Is the animal venomous?",
-    "fins": "Does the animal have fins?",
-    "legs": "How many legs does the animal have?",
-    "tail": "Does the animal have a tail?",
-    "domestic": "Is the animal domesticated?",
-    "catsize": "Is the animal at catsize?"
-}
+    all_records = []
 
-def generate_response(question, value):
-    if question == "What is the animal's class type?":
-        return f"It is a {value}."
-    elif question == "How many legs does the animal have?":
-        return f"It has {value} legs."
-    else:
-        return "Yes." if value == 1 else "No."
+    for item in data:
+        instruction = item['instruction']
+        input_value = item['input']
+        output_value = item['output']
+        system_value = item['system']
+        history = item['history']
 
+        records = []
+
+        for i in range(len(history)):
+            record = {
+                'instruction': instruction,
+                'input': history[i][0],
+                'output': history[i][1],
+                'system': system_value,
+                'history': history[:i]
+            }
+            records.append(record)
+
+        final_record = {
+            'instruction': instruction,
+            'input': input_value,
+            'output': output_value,
+            'system': system_value,
+            'history': history
+        }
+        records.append(final_record)
+
+        grouped_records = {
+            'original_record': item,
+            'prompted_record': records
+        }
+
+        all_records.append(grouped_records)
+
+    prompt_records = []
+    for group in all_records:
+        prompt_records.extend(group['prompted_record'])
+
+    # return prompted_records
+    with open(output_file, 'w') as file:
+        json.dump(prompt_records, file, indent=2)
+
+def save_dataset_to_json(dataset, json_file_path):
+    samples = [example for example in dataset]
+    os.makedirs(os.path.dirname(json_file_path), exist_ok=True)
+    with open(json_file_path, 'w') as json_file:
+        json.dump(samples, json_file, indent=4)
+
+def parse_arguments():
+    import argparse
+    parser = argparse.ArgumentParser(description="Iterative training and evaluation script")
+    parser.add_argument("--sanity_check", type=str, default="False", help="Test")
+    return parser.parse_args()
 
 if __name__ == "__main__":
-    dataset = []
 
-    for index, row in data.iterrows():
-        animal_data = []
-        history = []
-        for col, question in questions.items():
-            answer = generate_response(question, row[col])
-            item = {
-                "instruction": "Determine whether the user adopts or does not adopt the animal.",
-                "input": question,
-                "output": answer,
-                "system": "",
-                "history": history.copy()
-            }
-            history.append([question, answer])
-            animal_data.append(item)
+    current_directory = os.getcwd()
     
-        # randomly decide to adopt or not adopt
-        adopt_decision = random.choice(["I will adopt the animal.", "I will not adopt the animal."])
-        if adopt_decision == "I will not adopt the animal.":
-            outcome = "0"
+    input_file = os.path.join(current_directory, 'animal_guessing/animal_guessing.json')
+    output_file = os.path.join(current_directory, 'animal_guessing_prompt.json')
+    
+    generate_records(input_file, output_file)
+    dataset = load_dataset('json', data_files=output_file)
+
+    # Load the original dataset
+    args = parse_arguments()
+
+    if args.sanity_check == 'True':
+        train_test_dataset = dataset['train'].train_test_split(test_size=0.5)
+        train_dataset = train_test_dataset['train']
+        test_dataset = train_test_dataset['test']
+    else:
+        train_dataset = dataset['train']
+        test_dataset = None
+
+    splits = ['train', 'test']
+    for split in splits:
+        if split == 'train':
+            dataset_split = train_dataset
+        elif split == 'test' and test_dataset is not None:
+            dataset_split = test_dataset
         else:
-            if row['domestic'] == 1:
-                outcome = "1"  # home pet
-            else:
-                outcome = "-1"  # wild animal
+            continue
 
-        final_decision = {
-            "instruction": "Determine whether the user adopts or does not adopt the animal.",
-            "input": adopt_decision,
-            "output": outcome,
-            "system": "",
-            "history": history
-        }
-        animal_data.append(final_decision)
-        dataset.append(animal_data)
-
-    with open('data/animal_guessing.json', 'w') as outfile:
-        json.dump(dataset, outfile, indent=4)
+        output_dataset_path = os.path.join(current_directory, f"animal_guessing_{split}.json")
+        save_dataset_to_json(dataset_split, output_dataset_path)
+        print(f"{split}: {len(dataset_split)}")
