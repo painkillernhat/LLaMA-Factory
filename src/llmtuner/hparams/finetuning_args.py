@@ -246,8 +246,8 @@ class FinetuningArguments(FreezeArguments, LoraArguments, RLHFArguments, GaloreA
         assert self.ref_model_quantization_bit in [None, 8, 4], "We only accept 4-bit or 8-bit quantization."
         assert self.reward_model_quantization_bit in [None, 8, 4], "We only accept 4-bit or 8-bit quantization."
 
-        # if self.stage == "ppo" and self.reward_model is None:
-        #     raise ValueError("`reward_model` is necessary for PPO training.")
+        if self.stage == "ppo" and self.reward_model is None:
+            raise ValueError("`reward_model` is necessary for PPO training.")
 
         if self.stage == "ppo" and self.reward_model_type == "lora" and self.finetuning_type != "lora":
             raise ValueError("`reward_model_type` cannot be lora for Freeze/Full PPO training.")

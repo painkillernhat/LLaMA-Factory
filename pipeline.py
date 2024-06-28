@@ -37,22 +37,22 @@ def main(args):
         --use_fast_tokenizer True \
         --finetuning_type {args.finetuning_type} \
         --template {args.template} \
-        --flash_attn {args.flash_attn} \
+        --flash_attn True \
         --dataset_dir {args.dataset_dir} \
         --dataset {dataset_sft} \
-        --preprocessing_num_workers {args.preprocessing_num_workers} \
-        --cutoff_len {args.cutoff_len} \
+        --preprocessing_num_workers 32 \
+        --cutoff_len 4096 \
         --num_train_epochs {args.num_train_epochs} \
         --bf16 True \
         --tf32 False \
         --per_device_train_batch_size {args.per_device_train_batch_size} \
         --gradient_accumulation_steps {args.gradient_accumulation_steps} \
         --learning_rate {args.learning_rate} \
-        --lr_scheduler_type {args.lr_scheduler_type} \
-        --max_grad_norm {args.max_grad_norm} \
-        --weight_decay {args.weight_decay} \
+        --lr_scheduler_type cosine \
+        --max_grad_norm 1.0 \
+        --weight_decay 0.001 \
         --logging_steps {args.logging_steps} \
-        --warmup_ratio {args.warmup_ratio} \
+        --warmup_ratio 0.02 \
         --save_steps {args.save_steps} \
         --neftune_noise_alpha 0 \
         --lora_rank 256 \
@@ -60,7 +60,7 @@ def main(args):
         --lora_dropout 0.1 \
         --lora_target {args.lora_target} \
         --output_dir {sft_adapter_path} \
-        --save_total_limit {args.save_total_limit} \
+        --save_total_limit 3 \
         --plot_loss \
         --overwrite_cache \
         --overwrite_output_dir \
@@ -81,11 +81,11 @@ def main(args):
         --adapter_name_or_path {sft_adapter_path} \
         --use_fast_tokenizer True \
         --finetuning_type {args.finetuning_type} \
-        --flash_attn {args.flash_attn} \
+        --flash_attn True \
         --dataset_dir {args.dataset_dir} \
         --dataset {testset} \
-        --preprocessing_num_workers {args.preprocessing_num_workers} \
-        --cutoff_len {args.cutoff_len} \
+        --preprocessing_num_workers 32 \
+        --cutoff_len 4096 \
         --num_train_epochs {args.num_train_epochs} \
         --bf16 True \
         --tf32 False \
@@ -93,11 +93,11 @@ def main(args):
         --per_device_eval_batch_size {args.per_device_eval_batch_size} \
         --gradient_accumulation_steps {args.gradient_accumulation_steps} \
         --learning_rate {args.learning_rate} \
-        --lr_scheduler_type {args.lr_scheduler_type} \
-        --max_grad_norm {args.max_grad_norm} \
-        --weight_decay {args.weight_decay} \
+        --lr_scheduler_type cosine \
+        --max_grad_norm 1.0 \
+        --weight_decay 0.001 \
         --logging_steps {args.logging_steps} \
-        --warmup_ratio {args.warmup_ratio} \
+        --warmup_ratio 0.02 \
         --save_steps {args.save_steps} \
         --neftune_noise_alpha 0 \
         --lora_target {args.lora_target} \
@@ -136,6 +136,7 @@ def main(args):
 
     print("Calculating reward...")
     # calculate_reward(args, new_dataset, n, num_repeat, ppo_dataset)
+    
 
     ppo_adapter_path = f"saves/{model_name}/{args.dataset_name}/ppo"
     dataset_ppo = f"animal_ppo"
@@ -143,7 +144,7 @@ def main(args):
 
     rm_adapter_path = f"saves/{model_name}/{args.dataset_name}/rm"
 
-    #### Run PPO  --reward_model {rm_adapter_path} \
+    #### Run PPO
     ppo_train_command = f"""CUDA_VISIBLE_DEVICES={args.gpu_ids} accelerate launch --main_process_port={args.main_process_port} \
         src/train_bash.py \
         --stage ppo \
@@ -157,19 +158,20 @@ def main(args):
         --flash_attn {args.flash_attn} \
         --dataset_dir {args.dataset_dir} \
         --dataset {dataset_ppo} \
-        --preprocessing_num_workers {args.preprocessing_num_workers} \
-        --cutoff_len {args.cutoff_len} \
+        --preprocessing_num_workers 32 \
+        --cutoff_len 4096 \
         --num_train_epochs {args.num_train_epochs} \
         --bf16 False \
         --fp16 True \
+        --reward_model {rm_adapter_path} \
         --per_device_train_batch_size {args.per_device_train_batch_size} \
         --gradient_accumulation_steps {args.gradient_accumulation_steps} \
         --learning_rate {args.learning_rate} \
-        --lr_scheduler_type {args.lr_scheduler_type} \
-        --max_grad_norm {args.max_grad_norm} \
-        --weight_decay {args.weight_decay} \
+        --lr_scheduler_type cosine \
+        --max_grad_norm 1.0 \
+        --weight_decay 0.001 \
         --logging_steps {args.logging_steps} \
-        --warmup_ratio {args.warmup_ratio} \
+        --warmup_ratio 0.02 \
         --save_steps {args.save_steps} \
         --neftune_noise_alpha 0 \
         --lora_rank 256 \
@@ -177,10 +179,11 @@ def main(args):
         --lora_dropout 0.1 \
         --lora_target {args.lora_target} \
         --output_dir {ppo_adapter_path} \
-        --save_total_limit {args.save_total_limit} \
+        --save_total_limit 3 \
         --plot_loss \
         --overwrite_cache \
         --overwrite_output_dir \
+        --max_new_tokens 256 \
         --report_to none
     """
     print("Training PPO model...")
@@ -191,7 +194,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--template", type=str, default="llama2", help="Template name")
     parser.add_argument("--finetuning_type", type=str, default="lora", help="Fine-tuning type")
-    parser.add_argument("--cutoff_len", type=int, default=4096, help="Cutoff length")
+    parser.add_argument("--cutoff_len", type=int, default=1024, help="Cutoff length")
     parser.add_argument("--per_device_train_batch_size", type=int, default=2, help="Batch size for training")
     parser.add_argument("--per_device_eval_batch_size", type=int, default=2, help="Batch size for evaluation")
     parser.add_argument("--gradient_accumulation_steps", type=int, default=32, help="Gradient accumulation steps")
@@ -204,11 +207,6 @@ if __name__ == "__main__":
     parser.add_argument("--sanity_check", action="store_true", help="Test")
     parser.add_argument("--output_dir", type=str, default="saves/Llama-2-7b-hf/animal/sft", help="Directory containing the dataset")
     parser.add_argument("--adapter_name_or_path", type=str, default="saves/Llama-2-7b-hf/animal/sft", help="")
-    parser.add_argument("--preprocessing_num_workers", type=int, default=32, help="")
-    parser.add_argument("--save_total_limit", type=int, default=3, help="")
-    parser.add_argument("--weight_decay", type=float, default=0.001, help="")
-    parser.add_argument("--warmup_ratio", type=float, default=0.02, help="")
-    parser.add_argument("--max_grad_norm", type=float, default=1.0, help="")
 
     #######################
     parser.add_argument("--dataset_name", type=str, default="animal", help="Dataset name")

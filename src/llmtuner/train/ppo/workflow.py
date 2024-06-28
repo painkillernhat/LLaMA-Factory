@@ -37,10 +37,7 @@ from ...data.preprocess import preprocess_unsupervised_dataset, print_unsupervis
 from ...data.template import get_template_and_fix_tokenizer
 
 from .policy import Policy, PolicyPPOTrainer
-
-def collate_fn(data):
-    zipped = zip(data)
-    return list(zipped)
+# from ...........utils import *
 
 def run_ppo():
     return
@@ -154,7 +151,7 @@ class Actor:
         ref_model = create_ref_model(
             self.policy_model_args, self.policy_finetuning_args, add_valuehead=True)
 
-        # data_collator = DataCollatorWithPadding(tokenizer=self.policy.tokenizer)
+        data_collator = DataCollatorWithPadding(tokenizer=self.policy.tokenizer)
 
         # Initialize our Trainer
         ppo_trainer = PolicyPPOTrainer(
@@ -167,7 +164,7 @@ class Actor:
             ref_model=ref_model,
             tokenizer=self.policy.tokenizer,
             dataset=dataset,
-            data_collator=collate_fn,
+            data_collator=data_collator,
         )
 
         # Training
