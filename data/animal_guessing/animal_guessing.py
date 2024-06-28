@@ -5,7 +5,7 @@ from typing import Any, Dict, Generator, List, Tuple
 
 
 _DESCRIPTION = "An example of dataset."
-file_path = "/home/thu/LLaMA-Factory/data/animal_guessing/animal_guessing.jsonl"
+file_animal_path = "animal_guessing.jsonl"
 
 
 class AnimalGuessingDataset(datasets.GeneratorBasedBuilder):
@@ -17,7 +17,6 @@ class AnimalGuessingDataset(datasets.GeneratorBasedBuilder):
             "instruction": datasets.Value("string"),
             "input": datasets.Value("string"),
             "output": datasets.Value("string"),
-            "system": datasets.Value("string"),
             "history": datasets.Sequence(datasets.Sequence(datasets.Value("string")))
         })
         return datasets.DatasetInfo(
@@ -30,7 +29,7 @@ class AnimalGuessingDataset(datasets.GeneratorBasedBuilder):
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,
                 gen_kwargs={
-                    "filepath": file_path
+                    "filepath": file_animal_path
                 }
             )
         ]
@@ -50,11 +49,11 @@ def save_dataset_to_json(dataset, json_file_path):
 
 
 if __name__ == "__main__":
-    dataset = datasets.load_dataset(__file__, data_files=file_path)
+    dataset = datasets.load_dataset(__file__)
 
     dataset = dataset["train"].train_test_split(test_size=0.2)
 
-    output_dir = os.path.join(os.path.dirname(__file__), "../")
+    output_dir = os.path.join(os.path.dirname(__file__), "splits")
     os.makedirs(output_dir, exist_ok=True)
 
     splits = ['train', 'test']
